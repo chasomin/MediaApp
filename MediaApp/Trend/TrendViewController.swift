@@ -9,11 +9,10 @@ import UIKit
 import Kingfisher
 
 class TrendViewController: UIViewController {
-    let manager = TrendAPIManager()
 
-    @IBOutlet var tableView: UITableView!
+    let tableView = UITableView()
     
-    var data: [Result] = [] {
+    var data: [TrendResult] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -21,25 +20,42 @@ class TrendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        configureHierarchy()
+        setupConstraints()
+        setTableView()
+        
+        MediaAPIManager.shard.fetchTrendingTV{ data in
+            self.data = data
+        }
+        
+    }
+}
+
+extension TrendViewController {
+    
+    func configureHierarchy() {
+        view.addSubview(tableView)
+        
+    }
+    
+    func setupConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func setTableView() {
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 340
         tableView.separatorStyle = .none
         
-        
-        manager.callRequest { data in
-            self.data = data
-        }
-        
-        let xib = UINib(nibName: TrendTableViewCell.id, bundle: nil)
-        tableView.register(xib, forCellReuseIdentifier: TrendTableViewCell.id)
+        tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: TrendTableViewCell.id)
 
     }
-    
-//https://image.tmdb.org/t/p/<이미지 크기>/<이미지 파일명>
-        //https://image.tmdb.org/t/p/original
 }
 
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
@@ -51,7 +67,6 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let url = "https://image.tmdb.org/t/p/original\(data[indexPath.row].backdropPath)"
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.id, for: indexPath) as! TrendTableViewCell
         
-        cell.mediaTypeLabel.text = data[indexPath.row].mediaType
         cell.nameLabel.text = data[indexPath.row].title ?? data[indexPath.row].name
         cell.dateLabel.text = data[indexPath.row].releaseDate ?? data[indexPath.row].firstAirDate
         cell.overviewLabel.text = data[indexPath.row].overview

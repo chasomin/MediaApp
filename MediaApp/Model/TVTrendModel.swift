@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Trend: Codable {
+struct Trend: Decodable {
     let page: Int
-    let results: [Result]
+    let results: [TrendResult]
 }
 
-struct Result: Codable {
+struct TrendResult: Decodable {
     let adult: Bool
     let backdropPath: String
     let id: Int

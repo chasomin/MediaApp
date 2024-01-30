@@ -1,15 +1,14 @@
 //
-//  TrendTableViewCell.swift
+//  MediaCollectionViewCell.swift
 //  MediaApp
 //
-//  Created by 차소민 on 1/17/24.
+//  Created by 차소민 on 1/30/24.
 //
 
 import UIKit
-import SnapKit
 
-class TrendTableViewCell: UITableViewCell {
-
+class MediaCollectionViewCell: UICollectionViewCell {
+    
     let posterImageView = UIImageView()
     let voteAverageLabel = UILabel()
     let nameLabel = UILabel()
@@ -18,14 +17,14 @@ class TrendTableViewCell: UITableViewCell {
 
     let view = UIView()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         contentView.backgroundColor = .white
         configureHierarchy()
-        setupConstraints()
-        setUI()
+        configureLayout()
+        configureView()
+
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +37,7 @@ class TrendTableViewCell: UITableViewCell {
     
 }
 
-extension TrendTableViewCell {
+extension MediaCollectionViewCell: CodebaseUI {
     
     func configureHierarchy() {
         contentView.addSubview(view)
@@ -50,7 +49,7 @@ extension TrendTableViewCell {
         view.addSubview(overviewLabel)
     }
     
-    func setupConstraints() {
+    func configureLayout() {
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(20)
         }
@@ -83,8 +82,7 @@ extension TrendTableViewCell {
         }
     }
     
-    func setUI() {
-        selectionStyle = .none
+    func configureView() {
         
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
@@ -100,6 +98,8 @@ extension TrendTableViewCell {
         voteAverageLabel.backgroundColor = .white
         voteAverageLabel.textColor = .black
         voteAverageLabel.textAlignment = .center
+        voteAverageLabel.layer.cornerRadius = 10
+        voteAverageLabel.clipsToBounds = true
         
         nameLabel.font = .systemFont(ofSize: 15)
         
