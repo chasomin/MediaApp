@@ -10,9 +10,7 @@ import UIKit
 class MediaViewController: UIViewController {
     
     let tableView = UITableView()
-    
-//    let titleList = ["Trend", "Top Rated", "Popular"]
-    
+        
     var dataList = [
         Media(results: []),
         Media(results: []),

@@ -10,7 +10,7 @@ import UIKit
 class MediaCollectionViewCell: UICollectionViewCell {
     
     let posterImageView = PosterImageView(frame: .zero)
-    let voteAverageLabel = UILabel()
+    let voteAverageLabel = WhiteCapsuleSmallLabel()
     let nameLabel = UILabel()
     let dateLabel = UILabel()
     let overviewLabel = UILabel()
@@ -87,17 +87,7 @@ extension MediaCollectionViewCell: CodebaseUI {
         
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowOffset = CGSize(width: 5, height: 5)
-        view.layer.shadowColor = UIColor.gray.cgColor
         view.backgroundColor = .systemGray6
-                
-        voteAverageLabel.font = .systemFont(ofSize: 13)
-        voteAverageLabel.backgroundColor = .white
-        voteAverageLabel.textColor = .black
-        voteAverageLabel.textAlignment = .center
-        voteAverageLabel.layer.cornerRadius = 10
-        voteAverageLabel.clipsToBounds = true
         
         nameLabel.font = .boldSystemFont(ofSize: 15)
         
