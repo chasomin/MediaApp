@@ -9,7 +9,7 @@ import UIKit
 
 class MediaCollectionViewCell: UICollectionViewCell {
     
-    let posterImageView = UIImageView()
+    let posterImageView = PosterImageView(frame: .zero)
     let voteAverageLabel = UILabel()
     let nameLabel = UILabel()
     let dateLabel = UILabel()
@@ -19,7 +19,8 @@ class MediaCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .white
+        
+        backgroundColor = .clear
         configureHierarchy()
         configureLayout()
         configureView()
@@ -89,11 +90,8 @@ extension MediaCollectionViewCell: CodebaseUI {
         view.layer.shadowOpacity = 0.3
         view.layer.shadowOffset = CGSize(width: 5, height: 5)
         view.layer.shadowColor = UIColor.gray.cgColor
-        view.backgroundColor = .systemYellow
-        
-        posterImageView.contentMode = .scaleAspectFill
-        posterImageView.clipsToBounds = true
-        
+        view.backgroundColor = .systemGray6
+                
         voteAverageLabel.font = .systemFont(ofSize: 13)
         voteAverageLabel.backgroundColor = .white
         voteAverageLabel.textColor = .black
@@ -101,9 +99,10 @@ extension MediaCollectionViewCell: CodebaseUI {
         voteAverageLabel.layer.cornerRadius = 10
         voteAverageLabel.clipsToBounds = true
         
-        nameLabel.font = .systemFont(ofSize: 15)
+        nameLabel.font = .boldSystemFont(ofSize: 15)
         
         dateLabel.font = .systemFont(ofSize: 12)
+        dateLabel.textColor = .systemGray
         
         overviewLabel.font = .systemFont(ofSize: 13)
         overviewLabel.numberOfLines = 3

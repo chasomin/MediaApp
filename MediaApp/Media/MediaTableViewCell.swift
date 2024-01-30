@@ -15,6 +15,8 @@ class MediaTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
+        
         configureHierarchy()
         configureLayout()
         configureView()
@@ -26,7 +28,7 @@ class MediaTableViewCell: UITableViewCell {
     
     static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 340)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 50, height: 370)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -55,16 +57,15 @@ extension MediaTableViewCell: CodebaseUI {
     }
     
     func configureView() {
+        
+        selectionStyle = .none
+        
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 20)
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 1
         
-//        label.text = "Trend"
-//        
-//        label.backgroundColor = .red
-//        
-//        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .clear
 
     }
     

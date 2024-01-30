@@ -12,7 +12,7 @@ class TrendViewController: UIViewController {
 
     let tableView = UITableView()
     
-    var data: [TrendResult] = [] {
+    var data: [Result] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -26,7 +26,7 @@ class TrendViewController: UIViewController {
         setTableView()
         
         MediaAPIManager.shard.fetchTrendingTV{ data in
-            self.data = data
+            self.data = data.results
         }
         
     }
@@ -64,11 +64,11 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let url = "https://image.tmdb.org/t/p/original\(data[indexPath.row].backdropPath)"
+        let url = "https://image.tmdb.org/t/p/original\(data[indexPath.row].backdrop)"
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.id, for: indexPath) as! TrendTableViewCell
         
-        cell.nameLabel.text = data[indexPath.row].title ?? data[indexPath.row].name
-        cell.dateLabel.text = data[indexPath.row].releaseDate ?? data[indexPath.row].firstAirDate
+        cell.nameLabel.text = data[indexPath.row].name
+        cell.dateLabel.text = data[indexPath.row].firstAirDate
         cell.overviewLabel.text = data[indexPath.row].overview
         cell.posterImageView.kf.setImage(with: URL(string: url))
         cell.voteAverageLabel.text = "\(data[indexPath.row].voteAverage)"

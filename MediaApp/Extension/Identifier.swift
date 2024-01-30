@@ -9,6 +9,12 @@ import UIKit
 
 extension UITableViewCell {
     static var id: String {
-        return String(describing: self)
+        return self.description()
+    }
+}
+
+extension UICollectionViewCell {
+    static var id: String {
+        return self.description()
     }
 }
