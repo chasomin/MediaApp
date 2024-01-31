@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7921B6CA2B6A1C0100848184 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6C92B6A1C0100848184 /* BaseViewController.swift */; };
 		796FFDDB2B68E77E00C3DE08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDA2B68E77E00C3DE08 /* SnapKit */; };
 		796FFDDD2B68E77E00C3DE08 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */; };
 		796FFDDF2B68ED9A00C3DE08 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */; };
@@ -24,16 +25,14 @@
 		79892C002B580B5400904F52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79892BFE2B580B5400904F52 /* LaunchScreen.storyboard */; };
 		79892C082B580D7E00904F52 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 79892C072B580D7E00904F52 /* .gitignore */; };
 		79892C0A2B580DD000904F52 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79892C092B580DD000904F52 /* APIKey.swift */; };
-		79892C0E2B580E4800904F52 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79892C0D2B580E4800904F52 /* TrendViewController.swift */; };
 		79892C102B580E6700904F52 /* MediaAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79892C0F2B580E6700904F52 /* MediaAPIManager.swift */; };
 		79892C132B580E8F00904F52 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 79892C122B580E8F00904F52 /* Alamofire */; };
-		79892C182B5810AB00904F52 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79892C162B5810AB00904F52 /* TrendTableViewCell.swift */; };
-		79892C192B5810AB00904F52 /* TrendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79892C172B5810AB00904F52 /* TrendTableViewCell.xib */; };
 		79892C1B2B5810C900904F52 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79892C1A2B5810C900904F52 /* Identifier.swift */; };
 		79892C1E2B581A6700904F52 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 79892C1D2B581A6700904F52 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7921B6C92B6A1C0100848184 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		796FFDE02B68EDB600C3DE08 /* CodeBaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseViewProtocol.swift; sourceTree = "<group>"; };
 		796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -51,10 +50,7 @@
 		79892C012B580B5400904F52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79892C072B580D7E00904F52 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		79892C092B580DD000904F52 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		79892C0D2B580E4800904F52 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		79892C0F2B580E6700904F52 /* MediaAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAPIManager.swift; sourceTree = "<group>"; };
-		79892C162B5810AB00904F52 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
-		79892C172B5810AB00904F52 /* TrendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendTableViewCell.xib; sourceTree = "<group>"; };
 		79892C1A2B5810C900904F52 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7921B6C82B6A1BE900848184 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7921B6C92B6A1C0100848184 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		796FFDEA2B68F75800C3DE08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +138,7 @@
 		79892BF22B580B5200904F52 /* MediaApp */ = {
 			isa = PBXGroup;
 			children = (
+				7921B6C82B6A1BE900848184 /* Base */,
 				79892BF92B580B5200904F52 /* Main.storyboard */,
 				79892BF32B580B5200904F52 /* AppDelegate.swift */,
 				79892BF52B580B5200904F52 /* SceneDelegate.swift */,
@@ -144,7 +149,6 @@
 				79892C0F2B580E6700904F52 /* MediaAPIManager.swift */,
 				796FFDEA2B68F75800C3DE08 /* Model */,
 				79892C0B2B580E1400904F52 /* Media */,
-				79892C0C2B580E1700904F52 /* TrendTableView */,
 				79892BFC2B580B5400904F52 /* Assets.xcassets */,
 				79892BFE2B580B5400904F52 /* LaunchScreen.storyboard */,
 				79892C012B580B5400904F52 /* Info.plist */,
@@ -161,16 +165,6 @@
 				796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */,
 			);
 			path = Media;
-			sourceTree = "<group>";
-		};
-		79892C0C2B580E1700904F52 /* TrendTableView */ = {
-			isa = PBXGroup;
-			children = (
-				79892C0D2B580E4800904F52 /* TrendViewController.swift */,
-				79892C162B5810AB00904F52 /* TrendTableViewCell.swift */,
-				79892C172B5810AB00904F52 /* TrendTableViewCell.xib */,
-			);
-			path = TrendTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +237,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79892C082B580D7E00904F52 /* .gitignore in Resources */,
-				79892C192B5810AB00904F52 /* TrendTableViewCell.xib in Resources */,
 				79892C002B580B5400904F52 /* LaunchScreen.storyboard in Resources */,
 				79892BFD2B580B5400904F52 /* Assets.xcassets in Resources */,
 				79892BFB2B580B5200904F52 /* Main.storyboard in Resources */,
@@ -262,10 +255,9 @@
 				796FFDE52B68F3D400C3DE08 /* MediaCollectionViewCell.swift in Sources */,
 				79892BF42B580B5200904F52 /* AppDelegate.swift in Sources */,
 				79892C102B580E6700904F52 /* MediaAPIManager.swift in Sources */,
+				7921B6CA2B6A1C0100848184 /* BaseViewController.swift in Sources */,
 				796FFDF22B69209200C3DE08 /* PosterImageView.swift in Sources */,
-				79892C182B5810AB00904F52 /* TrendTableViewCell.swift in Sources */,
 				796FFDE12B68EDB600C3DE08 /* CodeBaseViewProtocol.swift in Sources */,
-				79892C0E2B580E4800904F52 /* TrendViewController.swift in Sources */,
 				79892C0A2B580DD000904F52 /* APIKey.swift in Sources */,
 				79892BF62B580B5200904F52 /* SceneDelegate.swift in Sources */,
 				796FFDE32B68EEDB00C3DE08 /* MediaTableViewCell.swift in Sources */,

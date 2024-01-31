@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import SnapKit
+import Kingfisher
 
-class MediaViewController: UIViewController {
+class MediaViewController: BaseViewController {
     
     let tableView = UITableView()
         
@@ -15,47 +17,24 @@ class MediaViewController: UIViewController {
         Media(results: []),
         Media(results: []),
         Media(results: [])
-    ]{
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        configureHierarchy()
-        configureLayout()
-        configureView()
-        
-        MediaAPIManager.shard.fetchTrendingTV { result in
-            self.dataList[0] = result
-        }
-        
-        MediaAPIManager.shard.fetchTopRatedTV { result in
-            self.dataList[1] = result
-        }
-        
-        MediaAPIManager.shard.fetchPopularTV { result in
-            self.dataList[2] = result
-        }
-
+        fetchData()
     }
     
-}
-
-extension MediaViewController: CodebaseUI {
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(tableView)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
-    func configureView() {
+    override func configureView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
@@ -65,9 +44,38 @@ extension MediaViewController: CodebaseUI {
         
         tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.id)
     }
-    
-    
 }
+
+extension MediaViewController {
+    
+    func fetchData() {
+        let group = DispatchGroup()
+        
+        group.enter()
+        MediaAPIManager.shard.fetchTrendingTV { result in
+            self.dataList[0] = result
+            group.leave()
+        }
+        
+        group.enter()
+        MediaAPIManager.shard.fetchTopRatedTV { result in
+            self.dataList[1] = result
+            group.leave()
+        }
+        
+        group.enter()
+        MediaAPIManager.shard.fetchPopularTV { result in
+            self.dataList[2] = result
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+
+    }
+}
+
 
 extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     
