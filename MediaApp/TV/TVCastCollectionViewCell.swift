@@ -41,28 +41,56 @@ class TVCastCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .clear
         
-        contentView.addSubview(imageView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(roleLabel)
-        
-        imageView.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView).inset(10)
-            make.height.equalTo(120)
-            make.width.equalTo(90)
-        }
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(10)
-        }
-        roleLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(5)
-            make.horizontalEdges.equalToSuperview().inset(10)
-        }
+        configureHierarchy()
+        configureLayout()
 
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+extension TVCastCollectionViewCell {
+    func configureCell(data: AggregateCredits, index: Int) {
+        let url = Constants.Image.ImageBaseURL.baseURL + (data.cast[index].profile_path ?? "")
+        
+        imageView.kf.setImage(with: URL(string: url))
+        nameLabel.text = data.cast[index].name
+        roleLabel.text = data.cast[index].roles.first?.character
+
+    }
+}
+
+extension TVCastCollectionViewCell: CodebaseUI {
+    func configureHierarchy() {
+        contentView.addSubview(imageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(roleLabel)
+
+    }
+    
+    func configureLayout() {
+        imageView.snp.makeConstraints { make in
+            make.leading.equalTo(contentView).inset(20)
+            make.top.equalTo(contentView).inset(10)
+            make.height.equalTo(120)
+            make.width.equalTo(90)
+        }
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(20)
+        }
+        roleLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(5)
+            make.horizontalEdges.equalToSuperview().inset(20)
+        }
+    }
+    
+    func configureView() {
+        
+    }
+    
     
 }

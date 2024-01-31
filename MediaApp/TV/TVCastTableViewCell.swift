@@ -30,7 +30,7 @@ class TVCastTableViewCell: UITableViewCell {
     
     static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 200)
+        layout.itemSize = CGSize(width: 170, height: 200)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

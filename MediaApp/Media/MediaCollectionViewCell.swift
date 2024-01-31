@@ -39,6 +39,18 @@ class MediaCollectionViewCell: UICollectionViewCell {
     
 }
 
+extension MediaCollectionViewCell {
+    func configureCell(item: [Result], url: URL?, index: Int) {
+        posterImageView.kf.setImage(with: url, placeholder: Constants.Image.PlaceholderImage.image)
+        nameLabel.text = item[index].name
+        overviewLabel.text = item[index].overview
+        dateLabel.text = item[index].firstAirDate
+        voteAverageLabel.text = String(item[index].vote)
+        
+    }
+}
+
+
 extension MediaCollectionViewCell: CodebaseUI {
     
     func configureHierarchy() {

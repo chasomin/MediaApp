@@ -106,16 +106,12 @@ extension MediaViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.id, for: indexPath) as! MediaCollectionViewCell
-        let item = dataList[collectionView.tag].results
         
+        let item = dataList[collectionView.tag].results
         let url = URL(string: Constants.Image.ImageBaseURL.baseURL + (item[indexPath.item].backdrop ?? item[indexPath.item].poster ?? ""))
         
-        cell.posterImageView.kf.setImage(with: url, placeholder: Constants.Image.PlaceholderImage.image)
-        cell.nameLabel.text = item[indexPath.item].name
-        cell.overviewLabel.text = item[indexPath.item].overview
-        cell.dateLabel.text = item[indexPath.item].firstAirDate
-        cell.voteAverageLabel.text = String(item[indexPath.item].vote)
-        
+        cell.configureCell(item: item, url: url, index: indexPath.item)
+
         return cell
     }
     
