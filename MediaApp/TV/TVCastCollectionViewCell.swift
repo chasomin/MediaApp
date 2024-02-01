@@ -12,9 +12,7 @@ class TVCastCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-        
-        view.contentMode = .scaleAspectFit
-        
+        view.contentMode = .scaleAspectFill
         return view
     }()
     let nameLabel: UILabel = {
@@ -26,14 +24,11 @@ class TVCastCollectionViewCell: UICollectionViewCell {
         return view
     }()
     let roleLabel: UILabel = {
-        
         let view = UILabel()
         view.numberOfLines = 1
         view.textAlignment = .left
         view.font = .systemFont(ofSize: 10)
         view.textColor = .white
-
-        
         return view
     }()
     
@@ -73,18 +68,18 @@ extension TVCastCollectionViewCell: CodebaseUI {
     
     func configureLayout() {
         imageView.snp.makeConstraints { make in
-            make.leading.equalTo(contentView).inset(20)
+            make.leading.equalTo(contentView)
             make.top.equalTo(contentView).inset(10)
-            make.height.equalTo(120)
-            make.width.equalTo(90)
+            make.height.equalTo(130)
+            make.width.equalTo(100)
         }
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.top.equalTo(imageView.snp.bottom).offset(15)
+            make.horizontalEdges.equalTo(contentView)
         }
         roleLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(5)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.top.equalTo(nameLabel.snp.bottom)
+            make.horizontalEdges.equalTo(contentView)
         }
     }
     
