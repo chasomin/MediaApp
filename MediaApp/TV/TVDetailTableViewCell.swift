@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TVDetailTableViewCell: UITableViewCell {
+class TVDetailTableViewCell: BaseTableViewCell {
 
     let backdropImageView = UIImageView()
     let posterImageView = UIImageView()
@@ -22,44 +22,8 @@ class TVDetailTableViewCell: UITableViewCell {
     let tvChannelImageView = UIImageView()
     
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        backgroundColor = .clear
-        selectionStyle = .none
-        
-        configureHierarchy()
-        configureLayout()
-        configureView()
-        
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-extension TVDetailTableViewCell {
-    func configureCell(data: Result) {
-        let backdropURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.backdrop ?? "")")
-        let posterURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.poster ?? "")")
-        let tvChannerLogoURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.networks?.first?.logo_path ?? "")")
-        backdropImageView.kf.setImage(with: backdropURL)
-        posterImageView.kf.setImage(with: posterURL)
-        titleLabel.text = data.titleLabel
-        voteLabel.text = data.voteLable
-        episodeRunTimeLabel.text = data.runtime
-        genreLabel.text = data.genre
-        airDateLabel.text = data.airData
-        tvChannelLabel.text = data.networks?.first?.nameLabel
-        tvChannelImageView.kf.setImage(with: tvChannerLogoURL)
-        overviewLabel.text = data.overview
-    }
-}
-
-extension TVDetailTableViewCell: CodebaseUI {
-    func configureHierarchy() {
+    override func configureHierarchy() {
         
         contentView.addSubview(backdropImageView)
         contentView.addSubview(posterImageView)
@@ -74,7 +38,7 @@ extension TVDetailTableViewCell: CodebaseUI {
 
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         backdropImageView.snp.makeConstraints { make in
             make.horizontalEdges.top.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -83,9 +47,7 @@ extension TVDetailTableViewCell: CodebaseUI {
             make.leading.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(130)
             make.width.equalTo(100)
-            
         }
-        
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalToSuperview().inset(20)
@@ -131,7 +93,7 @@ extension TVDetailTableViewCell: CodebaseUI {
         }
     }
     
-    func configureView() {
+    override func configureView() {
         backdropImageView.contentMode = .scaleAspectFill
         backdropImageView.alpha = 0.3
         
@@ -154,6 +116,26 @@ extension TVDetailTableViewCell: CodebaseUI {
         overviewLabel.setTVDetailLabel()
         
     }
-    
-    
 }
+
+extension TVDetailTableViewCell {
+    func configureCell(data: Result) {
+        let backdropURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.backdrop ?? "")")
+        let posterURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.poster ?? "")")
+        let tvChannerLogoURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.networks?.first?.logo_path ?? "")")
+        backdropImageView.kf.setImage(with: backdropURL)
+        posterImageView.kf.setImage(with: posterURL)
+        titleLabel.text = data.titleLabel
+        voteLabel.text = data.voteLable
+        episodeRunTimeLabel.text = data.runtime
+        genreLabel.text = data.genre
+        airDateLabel.text = data.airData
+        tvChannelLabel.text = data.networks?.first?.nameLabel
+        tvChannelImageView.kf.setImage(with: tvChannerLogoURL)
+        overviewLabel.text = data.overview
+    }
+}
+
+    
+    
+

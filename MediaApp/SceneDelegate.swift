@@ -16,8 +16,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
+                
+
+        let tabBar = UITabBarController()
         
-        window?.rootViewController = TVDetailViewController()
+        let mediaViewController = UINavigationController(rootViewController: MediaViewController())
+        mediaViewController.navigationBar.prefersLargeTitles = true
+        mediaViewController.navigationBar.topItem?.title = "추천 컨텐츠"
+        let tvDetailViewController = UINavigationController(rootViewController: TVDetailViewController())
+        tvDetailViewController.navigationBar.topItem?.title = "명탐정 코난"
+        
+        mediaViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
+        tvDetailViewController.tabBarItem = UITabBarItem(title: "디테일", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+
+        tabBar.viewControllers = [mediaViewController, tvDetailViewController]
+        
+        window?.rootViewController = tabBar
         
         window?.makeKeyAndVisible()
         

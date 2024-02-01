@@ -8,24 +8,10 @@
 import UIKit
 import SnapKit
 
-class MediaTableViewCell: UITableViewCell {
+class MediaTableViewCell: BaseTableViewCell {
     
     let label = UILabel()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        backgroundColor = .clear
-        
-        configureHierarchy()
-        configureLayout()
-        configureView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -37,15 +23,13 @@ class MediaTableViewCell: UITableViewCell {
         
         return layout
     }
-}
-
-extension MediaTableViewCell: CodebaseUI {
-    func configureHierarchy() {
+    
+    override func configureHierarchy() {
         contentView.addSubview(label)
         contentView.addSubview(collectionView)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         label.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(22)
@@ -57,7 +41,7 @@ extension MediaTableViewCell: CodebaseUI {
         }
     }
     
-    func configureView() {
+    override func configureView() {
         
         selectionStyle = .none
         
@@ -69,6 +53,9 @@ extension MediaTableViewCell: CodebaseUI {
         collectionView.backgroundColor = .clear
 
     }
-    
-    
+
 }
+
+    
+    
+

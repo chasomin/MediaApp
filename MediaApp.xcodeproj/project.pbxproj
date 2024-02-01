@@ -16,6 +16,7 @@
 		7921B6DF2B6B793400848184 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6DE2B6B793400848184 /* BaseView.swift */; };
 		7921B6E12B6B79AB00848184 /* TVDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6E02B6B79AB00848184 /* TVDetailView.swift */; };
 		7921B6E42B6B7EF600848184 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6E32B6B7EF600848184 /* MediaView.swift */; };
+		7921B6E62B6B806100848184 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6E52B6B806100848184 /* BaseTableViewCell.swift */; };
 		796FFDDB2B68E77E00C3DE08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDA2B68E77E00C3DE08 /* SnapKit */; };
 		796FFDDD2B68E77E00C3DE08 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */; };
 		796FFDDF2B68ED9A00C3DE08 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */; };
@@ -49,6 +50,7 @@
 		7921B6DE2B6B793400848184 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		7921B6E02B6B79AB00848184 /* TVDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailView.swift; sourceTree = "<group>"; };
 		7921B6E32B6B7EF600848184 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
+		7921B6E52B6B806100848184 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		796FFDE02B68EDB600C3DE08 /* CodeBaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseViewProtocol.swift; sourceTree = "<group>"; };
 		796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				7921B6C92B6A1C0100848184 /* BaseViewController.swift */,
 				7921B6DE2B6B793400848184 /* BaseView.swift */,
+				7921B6E52B6B806100848184 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				796FFDEC2B691D0200C3DE08 /* Constans.swift in Sources */,
 				7921B6D32B6A2A3C00848184 /* TVCastCollectionViewCell.swift in Sources */,
 				7921B6E42B6B7EF600848184 /* MediaView.swift in Sources */,
+				7921B6E62B6B806100848184 /* BaseTableViewCell.swift in Sources */,
 				796FFDF42B6923F900C3DE08 /* WhiteCapsuleSmallLabel.swift in Sources */,
 				796FFDE72B68F74100C3DE08 /* MediaModel.swift in Sources */,
 			);

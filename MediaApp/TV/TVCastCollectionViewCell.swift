@@ -58,7 +58,7 @@ extension TVCastCollectionViewCell {
     }
 }
 
-extension TVCastCollectionViewCell: CodebaseUI {
+extension TVCastCollectionViewCell {
     func configureHierarchy() {
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
