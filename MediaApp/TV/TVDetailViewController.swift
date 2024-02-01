@@ -17,37 +17,21 @@ enum TVData {
     static let all: [Any] = [TVData.detail, TVData.cast, TVData.recommand]
 }
 
+
 class TVDetailViewController: BaseViewController {
+    let mainView = TVDetailView()
     
-    let tableView = UITableView()
+    override func loadView() {
+        view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+
         fetchData()
-        
-    }
-    
-    override func configureHierarchy() {
-        view.addSubview(tableView)
-    }
-    
-    override func configureLayout() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-
-    override func configureView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
-        
-        tableView.separatorStyle = .none
-
-        tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: TVDetailTableViewCell.id)
-        tableView.register(TVCastTableViewCell.self, forCellReuseIdentifier: TVCastTableViewCell.id)
-        tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.id)
     }
 }
 
@@ -75,7 +59,7 @@ extension TVDetailViewController {
         }
 
         group.notify(queue: .main) {
-            self.tableView.reloadData()
+            self.mainView.tableView.reloadData()
         }
 
     }

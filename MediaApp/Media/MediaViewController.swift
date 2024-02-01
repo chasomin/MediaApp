@@ -10,40 +10,27 @@ import SnapKit
 import Kingfisher
 
 class MediaViewController: BaseViewController {
+    let mainView = MediaView()
     
-    let tableView = UITableView()
-        
     var dataList = [
         Media(results: []),
         Media(results: []),
         Media(results: [])
     ]
+
+    override func loadView() {
+        view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+
         fetchData()
     }
     
-    override func configureHierarchy() {
-        view.addSubview(tableView)
-    }
-    
-    override func configureLayout() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-    override func configureView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
-        tableView.rowHeight = 400
-        
-        tableView.separatorStyle = .none
-        
-        tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.id)
-    }
 }
 
 extension MediaViewController {
@@ -70,7 +57,7 @@ extension MediaViewController {
         }
         
         group.notify(queue: .main) {
-            self.tableView.reloadData()
+            self.mainView.tableView.reloadData()
         }
 
     }

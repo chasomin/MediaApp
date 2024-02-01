@@ -91,11 +91,12 @@ struct Network: Decodable {
     }
 }
 
-
-
 struct Episode: Decodable {
     let air_date: String
 }
+
+
+
 
 struct AggregateCredits: Decodable  {
     let cast: [Cast]
