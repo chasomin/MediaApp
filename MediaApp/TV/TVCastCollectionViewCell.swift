@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class TVCastCollectionViewCell: BaseCollectionViewCell {
     
@@ -60,7 +61,7 @@ class TVCastCollectionViewCell: BaseCollectionViewCell {
 
 extension TVCastCollectionViewCell {
     func configureCell(data: AggregateCredits, index: Int) {
-        let url = Constants.Image.ImageBaseURL.baseURL + (data.cast[index].profile_path ?? "")
+        let url = Constants.Image.ImageBaseURL.baseURL + (data.cast[index].profile ?? "")
         
         imageView.kf.setImage(with: URL(string: url))
         nameLabel.text = data.cast[index].name

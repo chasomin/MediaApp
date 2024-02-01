@@ -6,6 +6,8 @@
 //
 
 import UIKit 
+import SnapKit
+
 
 class MediaView: BaseView {
  

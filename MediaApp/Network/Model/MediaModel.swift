@@ -73,7 +73,7 @@ struct Result: Decodable {
         if nextEpisodeToAir != nil {
             return "\(firstAirDate) ~"
         } else {
-            return "\(firstAirDate) ~ \(String(describing: lastEpisodeToAir?.air_date))"
+            return "\(firstAirDate) ~ \(String(describing: lastEpisodeToAir?.airDate))"
         }
     }
 }
@@ -83,8 +83,13 @@ struct Genre: Decodable {
 }
 
 struct Network: Decodable {
-    let logo_path: String
+    let logo: String
     let name: String
+    
+    enum CodingKeys: String, CodingKey {
+        case logo = "logo_path"
+        case name
+    }
     
     var nameLabel: String {
         return "채널 \(name)"
@@ -92,7 +97,11 @@ struct Network: Decodable {
 }
 
 struct Episode: Decodable {
-    let air_date: String
+    let airDate: String
+    
+    enum CodingKeys: String, CodingKey {
+        case airDate = "air_date"
+    }
 }
 
 
@@ -103,8 +112,14 @@ struct AggregateCredits: Decodable  {
 }
 struct Cast: Decodable  {
     let name: String
-    let profile_path: String?
+    let profile: String?
     let roles: [Role]
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case profile = "profile_path"
+        case roles
+    }
 }
 
 struct Role: Decodable  {

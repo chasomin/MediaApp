@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class TVDetailTableViewCell: BaseTableViewCell {
 
@@ -122,7 +123,7 @@ extension TVDetailTableViewCell {
     func configureCell(data: Result) {
         let backdropURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.backdrop ?? "")")
         let posterURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.poster ?? "")")
-        let tvChannerLogoURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.networks?.first?.logo_path ?? "")")
+        let tvChannerLogoURL = URL(string: Constants.Image.ImageBaseURL.baseURL + "\(data.networks?.first?.logo ?? "")")
         backdropImageView.kf.setImage(with: backdropURL)
         posterImageView.kf.setImage(with: posterURL)
         titleLabel.text = data.titleLabel

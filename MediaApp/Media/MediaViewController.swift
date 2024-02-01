@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SnapKit
-import Kingfisher
 
 class MediaViewController: BaseViewController {
     let mainView = MediaView()

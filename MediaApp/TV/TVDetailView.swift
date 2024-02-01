@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class TVDetailView: BaseView {
     let tableView = UITableView()

@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import Kingfisher
-import SnapKit
 
 enum TVData {
-    static var detail = Result(id: 0, backdrop: "", poster: "", firstAirDate: "", name: "", originalName: "", overview: "", voteAverage: 0, episodeRunTime: [], genres: [], lastEpisodeToAir: Episode(air_date: ""), nextEpisodeToAir: Episode(air_date: ""), networks: [])
+    static var detail = Result(id: 0, backdrop: "", poster: "", firstAirDate: "", name: "", originalName: "", overview: "", voteAverage: 0, episodeRunTime: [], genres: [], lastEpisodeToAir: Episode(airDate: ""), nextEpisodeToAir: Episode(airDate: ""), networks: [])
     static var cast = AggregateCredits(cast: [])
     static var recommand =  Media(results: [])
     
