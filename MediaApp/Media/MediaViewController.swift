@@ -39,19 +39,19 @@ extension MediaViewController {
         let group = DispatchGroup()
         
         group.enter()
-        MediaAPIManager.shard.fetchTrendingTV { result in
+        MediaAPIManager.shard.fetchMedia(api: .trend) { result in
             self.dataList[0] = result
             group.leave()
         }
         
         group.enter()
-        MediaAPIManager.shard.fetchTopRatedTV { result in
+        MediaAPIManager.shard.fetchMedia(api: .topRated) { result in
             self.dataList[1] = result
             group.leave()
         }
         
         group.enter()
-        MediaAPIManager.shard.fetchPopularTV { result in
+        MediaAPIManager.shard.fetchMedia(api: .popular) { result in
             self.dataList[2] = result
             group.leave()
         }

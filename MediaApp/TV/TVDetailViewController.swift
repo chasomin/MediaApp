@@ -40,20 +40,20 @@ extension TVDetailViewController {
         let group = DispatchGroup()
         
         group.enter()
-        MediaAPIManager.shard.fetchDetailsTV(id: 30983) { result in
-            
+        
+        MediaAPIManager.shard.fetchMedia(api: .detail(id: 30983)) { result in
             TVData.detail = result
             group.leave()
         }
-        
+                                         
         group.enter()
-        MediaAPIManager.shard.fetchAggregateCreditsTV(id: 30983) { result in
+        MediaAPIManager.shard.fetchMedia(api: .cast(id: 30983)) { result in
             TVData.cast = result
             group.leave()
         }
-        
+
         group.enter()
-        MediaAPIManager.shard.fetchRecommandationTV(id: 30983) { result in
+        MediaAPIManager.shard.fetchMedia(api: .recommand(id: 30983)) { result in
             TVData.recommand = result
             group.leave()
         }

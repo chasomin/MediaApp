@@ -10,35 +10,18 @@ import Alamofire
 
 struct MediaAPIManager {
     static let shard = MediaAPIManager()
-    
     private init() {}
     
-    let headers: HTTPHeaders = ["Authorization":APIKey.key]
-    let BaseURL = "https://api.themoviedb.org/3/"
-    
-    func fetchTrendingTV(completionHandler: @escaping (Media)->()) {
-        let url = BaseURL + "trending/tv/week?language=ko-KR"
+    func fetchMedia<T: Decodable>(api: MediaAPI, completionHandler: @escaping (T)->()) {
         
-        AF.request(url, method: .get, headers: headers)
-            .responseDecodable(of: Media.self) { response in
+        AF.request(api.endpoint,
+                   method: api.method,
+                   parameters: api.parameter,
+                   encoding: api.encoding,
+                   headers: api.header)
+            .responseDecodable(of: T.self) { response in
                 switch response.result {
                 case .success(let success):
-//                    dump(success.results)
-                    completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-    }
-    
-    func fetchTopRatedTV(completionHandler: @escaping (Media)->()) {
-        let url = BaseURL + "tv/top_rated?language=ko-KR"
-        
-        AF.request(url, method: .get, headers: headers)
-            .responseDecodable(of: Media.self) { response in
-                switch response.result {
-                case .success(let success):
-                    dump(success.results)
                     completionHandler(success)
                 case .failure(let failure):
                     print(failure)
@@ -47,66 +30,107 @@ struct MediaAPIManager {
     }
     
     
-    func fetchPopularTV(completionHandler: @escaping (Media) -> Void) {
-        let url = BaseURL + "tv/popular?language=ko-KR"
-        
-        AF.request(url, method: .get, headers: headers)
-            .responseDecodable(of: Media.self) { response in
-                switch response.result {
-                case .success(let success):
-                    dump(success.results)
-                    completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-    }
-
-    
-    func fetchDetailsTV(id: Int, completionHandler: @escaping (Result) -> Void) {
-        let url = BaseURL + "tv/\(id)?language=ko-KR"
-        
-        AF.request(url, method: .get, headers: headers)
-            .responseDecodable(of: Result.self) { response in
-                switch response.result {
-                case .success(let success):
-                    dump(success)
-                    completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-    }
-    
-    func fetchRecommandationTV(id: Int, completionHandler: @escaping (Media) -> Void) {
-        let url = BaseURL + "tv/\(id)/recommendations?language=ko-KR"
-        
-        AF.request(url, method: .get, headers: headers)
-            .responseDecodable(of: Media.self) { response in
-                switch response.result {
-                case .success(let success):
-//                    dump(success)
-                    completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-
-    }
-    
-    func fetchAggregateCreditsTV(id: Int, completionHandler: @escaping (AggregateCredits) -> Void) {
-        let url = BaseURL + "tv/\(id)/aggregate_credits"
-
-        AF.request(url, method: .get, headers: headers)
-            .responseDecodable(of: AggregateCredits.self) { response in
-                switch response.result {
-                case .success(let success):
-//                    dump(success.cast)
-                    completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-    }
+//    func fetchTrendingTV(api: MediaAPI, completionHandler: @escaping (Media)->()) {
+//        
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: Media.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//    }
+//    
+//    func fetchTopRatedTV(api: MediaAPI, completionHandler: @escaping (Media)->()) {
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: Media.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//    }
+//    
+//    
+//    func fetchPopularTV(api: MediaAPI,completionHandler: @escaping (Media) -> Void) {
+//        
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: Media.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//    }
+//
+//    
+//    func fetchDetailsTV(api: MediaAPI, completionHandler: @escaping (Result) -> Void) {
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: Result.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//    }
+//    
+//    func fetchRecommandationTV(api: MediaAPI, completionHandler: @escaping (Media) -> Void) {
+//        
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: Media.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//
+//    }
+//    
+//    func fetchAggregateCreditsTV(api:MediaAPI, completionHandler: @escaping (AggregateCredits) -> Void) {
+//
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: AggregateCredits.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//    }
     
 }
