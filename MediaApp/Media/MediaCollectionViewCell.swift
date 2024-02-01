@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MediaCollectionViewCell: UICollectionViewCell {
+class MediaCollectionViewCell: BaseCollectionViewCell {
     
     let posterImageView = PosterImageView(frame: .zero)
     let voteAverageLabel = WhiteCapsuleSmallLabel()
@@ -18,42 +18,8 @@ class MediaCollectionViewCell: UICollectionViewCell {
 
     let view = UIView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .clear
-        configureHierarchy()
-        configureLayout()
-        configureView()
-
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-
-    
-}
-
-extension MediaCollectionViewCell {
-    func configureCell(item: [Result], url: URL?, index: Int) {
-        posterImageView.kf.setImage(with: url, placeholder: Constants.Image.PlaceholderImage.image)
-        nameLabel.text = item[index].name
-        overviewLabel.text = item[index].overview
-        dateLabel.text = item[index].firstAirDate
-        voteAverageLabel.text = String(item[index].vote)
-        
-    }
-}
-
-
-extension MediaCollectionViewCell: CodebaseUI {
-    
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(view)
         
         view.addSubview(posterImageView)
@@ -63,7 +29,7 @@ extension MediaCollectionViewCell: CodebaseUI {
         view.addSubview(overviewLabel)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(20)
         }
@@ -96,7 +62,7 @@ extension MediaCollectionViewCell: CodebaseUI {
         }
     }
     
-    func configureView() {
+    override func configureView() {
         
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
@@ -110,4 +76,19 @@ extension MediaCollectionViewCell: CodebaseUI {
         overviewLabel.font = .systemFont(ofSize: 13)
         overviewLabel.numberOfLines = 3
     }
+
+    
 }
+
+extension MediaCollectionViewCell {
+    func configureCell(item: [Result], url: URL?, index: Int) {
+        posterImageView.kf.setImage(with: url, placeholder: Constants.Image.PlaceholderImage.image)
+        nameLabel.text = item[index].name
+        overviewLabel.text = item[index].overview
+        dateLabel.text = item[index].firstAirDate
+        voteAverageLabel.text = String(item[index].vote)
+        
+    }
+}
+
+

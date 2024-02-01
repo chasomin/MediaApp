@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TVCastCollectionViewCell: UICollectionViewCell {
+class TVCastCollectionViewCell: BaseCollectionViewCell {
     
     let imageView: UIImageView = {
         let view = UIImageView()
@@ -32,41 +32,15 @@ class TVCastCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .clear
-        
-        configureHierarchy()
-        configureLayout()
-
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-extension TVCastCollectionViewCell {
-    func configureCell(data: AggregateCredits, index: Int) {
-        let url = Constants.Image.ImageBaseURL.baseURL + (data.cast[index].profile_path ?? "")
-        
-        imageView.kf.setImage(with: URL(string: url))
-        nameLabel.text = data.cast[index].name
-        roleLabel.text = data.cast[index].roles.first?.character
-
-    }
-}
-
-extension TVCastCollectionViewCell {
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(roleLabel)
 
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         imageView.snp.makeConstraints { make in
             make.leading.equalTo(contentView)
             make.top.equalTo(contentView).inset(10)
@@ -82,10 +56,16 @@ extension TVCastCollectionViewCell {
             make.horizontalEdges.equalTo(contentView)
         }
     }
-    
-    func configureView() {
-        
-    }
-    
-    
 }
+
+extension TVCastCollectionViewCell {
+    func configureCell(data: AggregateCredits, index: Int) {
+        let url = Constants.Image.ImageBaseURL.baseURL + (data.cast[index].profile_path ?? "")
+        
+        imageView.kf.setImage(with: URL(string: url))
+        nameLabel.text = data.cast[index].name
+        roleLabel.text = data.cast[index].roles.first?.character
+
+    }
+}
+
