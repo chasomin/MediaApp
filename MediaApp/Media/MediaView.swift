@@ -26,6 +26,7 @@ class MediaView: BaseView {
     override func configureView() {
         tableView.backgroundColor = .clear
         tableView.rowHeight = 400
+        tableView.showsVerticalScrollIndicator = false
         
         tableView.separatorStyle = .none
         

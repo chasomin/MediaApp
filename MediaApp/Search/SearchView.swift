@@ -32,13 +32,13 @@ class SearchView: BaseView {
     }
     
     override func configureLayout() {
-        searchBar.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(56)
-        }
+//        searchBar.snp.makeConstraints { make in
+//            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+//            make.height.equalTo(56)
+//        }
         
         recentView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(60)
         }
@@ -81,7 +81,7 @@ class SearchView: BaseView {
         
         tableView.rowHeight = UITableView.automaticDimension
         
-        searchBar.placeholder = "브랜드, 상품, 프로필, 태그 등"
+        searchBar.placeholder = "TV 프로그램을 검색해보세요"
         searchBar.barTintColor = .clear
         
         recentLable.text = "최근 검색"
@@ -89,16 +89,17 @@ class SearchView: BaseView {
         recentLable.textColor = .white
         
         deleteAllButton.setTitle("모두 지우기", for: .normal)
-        deleteAllButton.titleLabel?.font = .systemFont(ofSize: 13)
+        deleteAllButton.titleLabel?.font = .boldSystemFont(ofSize: 13)
         deleteAllButton.contentHorizontalAlignment = .trailing
+        deleteAllButton.setTitleColor(.accent, for: .normal)
         
         tableView.backgroundColor = .clear
         tableView.tableHeaderView?.backgroundColor = .clear
         
         emptyView.backgroundColor = .clear
         
-//        emptyImageView.image = UIImage(systemName: "")
-//        emptyImageView.contentMode = .scaleAspectFit
+        emptyImageView.image = UIImage(systemName: "exclamationmark.magnifyingglass")
+        emptyImageView.contentMode = .scaleAspectFit
 
         emptyLabel.text = "최근 검색어가 없어요"
         emptyLabel.font = .boldSystemFont(ofSize: 17)

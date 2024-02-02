@@ -37,8 +37,17 @@ class TVDetailViewController: BaseViewController {
 }
 
 extension TVDetailViewController {
-    @objc func dismissView() {
-        dismiss(animated: true)
+    @objc func dismissView(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .changed:
+            if sender.velocity(in: mainView).y > 0 {
+                
+                dismiss(animated: true)
+            }
+        default:
+            break
+        }
+        
     }
 
     func fetchData(id: Int, completion: @escaping (() -> Void)) {
@@ -163,9 +172,10 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = TVData.recommand.results[indexPath.item].id
         fetchData(id: id) {
-            
+            self.mainView.tableView.reloadData()
         }
-        collectionView.reloadData()
+        self.mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+
     }
     
 }

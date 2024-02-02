@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.titleView = mainView.searchBar
         navigationController?.navigationBar.barStyle = .black
 
     }

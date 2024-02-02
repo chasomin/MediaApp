@@ -23,7 +23,7 @@ class TVDetailView: BaseView {
 
     override func configureView() {
         tableView.backgroundColor = .clear
-        
+        tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
 
         tableView.register(TVDetailTableViewCell.self, forCellReuseIdentifier: TVDetailTableViewCell.id)
