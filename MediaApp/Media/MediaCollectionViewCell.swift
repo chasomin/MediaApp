@@ -18,8 +18,7 @@ class MediaCollectionViewCell: BaseCollectionViewCell {
     let overviewLabel = UILabel()
 
     let view = UIView()
-    
-    
+
     override func configureHierarchy() {
         contentView.addSubview(view)
         
@@ -28,11 +27,12 @@ class MediaCollectionViewCell: BaseCollectionViewCell {
         view.addSubview(nameLabel)
         view.addSubview(dateLabel)
         view.addSubview(overviewLabel)
+        
     }
     
     override func configureLayout() {
         view.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(20)
+            make.edges.equalToSuperview().inset(10)
         }
         posterImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view)

@@ -17,7 +17,6 @@ enum TVData {
 
 
 class TVDetailViewController: BaseViewController {
-    var id = 0
     var navTitle = ""
     
     let mainView = TVDetailView()
@@ -32,10 +31,7 @@ class TVDetailViewController: BaseViewController {
         navigationItem.title = navTitle
         
         mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
-
-        fetchData(id: id)
-        
+        mainView.tableView.dataSource = self        
 
     }
 }
@@ -45,7 +41,7 @@ extension TVDetailViewController {
         dismiss(animated: true)
     }
 
-    func fetchData(id: Int) {
+    func fetchData(id: Int, completion: @escaping (() -> Void)) {
         let group = DispatchGroup()
         
         group.enter()
@@ -69,6 +65,7 @@ extension TVDetailViewController {
 
         group.notify(queue: .main) {
             self.mainView.tableView.reloadData()
+            completion()
         }
 
     }
@@ -164,8 +161,10 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        id = TVData.recommand.results[indexPath.item].id
-        fetchData(id: id)
+        let id = TVData.recommand.results[indexPath.item].id
+        fetchData(id: id) {
+            
+        }
         collectionView.reloadData()
     }
     

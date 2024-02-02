@@ -27,6 +27,7 @@ class MediaViewController: BaseViewController {
         mainView.tableView.dataSource = self
 
         fetchData()
+
     }
     
 }
@@ -105,11 +106,36 @@ extension MediaViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = TVDetailViewController()
         
-        vc.id = dataList[collectionView.tag].results[indexPath.item].id
         vc.navTitle = dataList[collectionView.tag].results[indexPath.item].name
         
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+
+        vc.fetchData(id: dataList[collectionView.tag].results[indexPath.item].id) {
+            self.present(vc, animated: true)
+        }
+
     }
     
+}
+
+extension MediaViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if let cv = scrollView as? UICollectionView {
+            let layout = cv.collectionViewLayout as! UICollectionViewFlowLayout
+            let cellWidth = layout.itemSize.width + layout.minimumLineSpacing
+            
+            var offset = targetContentOffset.pointee
+            var index = round((offset.x + cv.contentInset.left) / cellWidth)
+            
+            if cv.contentOffset.x > targetContentOffset.pointee.x {
+                index = floor(index)
+            } else {
+                index = ceil(index)
+            }
+            
+            offset = CGPoint(x: index * cellWidth, y: -cv.contentInset.top)
+            targetContentOffset.pointee = offset
+            
+        }
+    }
 }

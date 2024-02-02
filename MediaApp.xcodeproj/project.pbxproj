@@ -19,6 +19,8 @@
 		7921B6E62B6B806100848184 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6E52B6B806100848184 /* BaseTableViewCell.swift */; };
 		7921B6E82B6B897400848184 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6E72B6B897400848184 /* BaseCollectionViewCell.swift */; };
 		7921B6EA2B6B8AE800848184 /* MediaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B6E92B6B8AE800848184 /* MediaAPI.swift */; };
+		7921B7072B6CD2B100848184 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B7062B6CD2B100848184 /* SearchViewController.swift */; };
+		7921B7092B6CD30900848184 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7921B7082B6CD30900848184 /* SearchView.swift */; };
 		796FFDDB2B68E77E00C3DE08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDA2B68E77E00C3DE08 /* SnapKit */; };
 		796FFDDD2B68E77E00C3DE08 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */; };
 		796FFDDF2B68ED9A00C3DE08 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */; };
@@ -55,6 +57,8 @@
 		7921B6E52B6B806100848184 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		7921B6E72B6B897400848184 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		7921B6E92B6B8AE800848184 /* MediaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAPI.swift; sourceTree = "<group>"; };
+		7921B7062B6CD2B100848184 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7921B7082B6CD30900848184 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		796FFDE02B68EDB600C3DE08 /* CodeBaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseViewProtocol.swift; sourceTree = "<group>"; };
 		796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,6 +126,15 @@
 				7921B6E92B6B8AE800848184 /* MediaAPI.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		7921B7052B6CD29900848184 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7921B7062B6CD2B100848184 /* SearchViewController.swift */,
+				7921B7082B6CD30900848184 /* SearchView.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		796FFDEA2B68F75800C3DE08 /* Model */ = {
@@ -197,6 +210,7 @@
 				7921B6E22B6B7C9700848184 /* Network */,
 				79892C0B2B580E1400904F52 /* Media */,
 				7921B6CB2B6A20AA00848184 /* TV */,
+				7921B7052B6CD29900848184 /* Search */,
 				79892BFC2B580B5400904F52 /* Assets.xcassets */,
 				79892BFE2B580B5400904F52 /* LaunchScreen.storyboard */,
 				79892C012B580B5400904F52 /* Info.plist */,
@@ -210,8 +224,8 @@
 			children = (
 				796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */,
 				7921B6E32B6B7EF600848184 /* MediaView.swift */,
-				796FFDE42B68F3D400C3DE08 /* MediaCollectionViewCell.swift */,
 				796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */,
+				796FFDE42B68F3D400C3DE08 /* MediaCollectionViewCell.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 				79892C102B580E6700904F52 /* MediaAPIManager.swift in Sources */,
 				7921B6EA2B6B8AE800848184 /* MediaAPI.swift in Sources */,
 				7921B6E12B6B79AB00848184 /* TVDetailView.swift in Sources */,
+				7921B7072B6CD2B100848184 /* SearchViewController.swift in Sources */,
 				7921B6CF2B6A26AB00848184 /* TVCastTableViewCell.swift in Sources */,
 				7921B6DF2B6B793400848184 /* BaseView.swift in Sources */,
 				7921B6CA2B6A1C0100848184 /* BaseViewController.swift in Sources */,
@@ -317,6 +332,7 @@
 				79892C0A2B580DD000904F52 /* APIKey.swift in Sources */,
 				79892BF62B580B5200904F52 /* SceneDelegate.swift in Sources */,
 				796FFDE32B68EEDB00C3DE08 /* MediaTableViewCell.swift in Sources */,
+				7921B7092B6CD30900848184 /* SearchView.swift in Sources */,
 				7921B6E82B6B897400848184 /* BaseCollectionViewCell.swift in Sources */,
 				796FFDEC2B691D0200C3DE08 /* Constans.swift in Sources */,
 				7921B6D32B6A2A3C00848184 /* TVCastCollectionViewCell.swift in Sources */,
