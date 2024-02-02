@@ -15,7 +15,7 @@ enum MediaAPI {
     case detail(id: Int)
     case recommand(id: Int)
     case cast(id: Int)
-    
+    case search(query: String)
     
     var baseURL: String {
         "https://api.themoviedb.org/3/"
@@ -35,6 +35,8 @@ enum MediaAPI {
             URL(string: baseURL + "tv/\(id)/recommendations")!
         case .cast(let id):
             URL(string: baseURL + "tv/\(id)/aggregate_credits")!
+        case .search:
+            URL(string: baseURL + "search/tv")!
         }
     }
     
@@ -56,6 +58,8 @@ enum MediaAPI {
             ["language":"ko-KR"]
         case .cast:
             ["":""]
+        case .search(let query):
+            ["language":"ko-KR", "query":query]
         }
     }
     

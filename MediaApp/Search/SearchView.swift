@@ -49,7 +49,7 @@ class SearchView: BaseView {
         }
         
         deleteAllButton.snp.makeConstraints { make in
-            make.trailing.verticalEdges.equalToSuperview()
+            make.verticalEdges.equalToSuperview()
             make.trailing.equalToSuperview().inset(15)
         }
         
@@ -60,8 +60,7 @@ class SearchView: BaseView {
         
         emptyImageView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(330)
-            make.top.greaterThanOrEqualToSuperview().inset(50)
+            make.top.equalToSuperview().inset(70)
         }
         emptyLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
