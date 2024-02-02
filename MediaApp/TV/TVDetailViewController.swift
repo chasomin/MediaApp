@@ -17,41 +17,52 @@ enum TVData {
 
 
 class TVDetailViewController: BaseViewController {
-    let mainView = TVDetailView()
+    var id = 0
+    var navTitle = ""
     
+    let mainView = TVDetailView()
+
     override func loadView() {
         view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.title = navTitle
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
 
-        fetchData()
+        fetchData(id: id)
+        
+
     }
 }
 
 extension TVDetailViewController {
-    func fetchData() {
+    @objc func dismissView() {
+        dismiss(animated: true)
+    }
+
+    func fetchData(id: Int) {
         let group = DispatchGroup()
         
         group.enter()
         
-        MediaAPIManager.shard.fetchMedia(api: .detail(id: 30983)) { result in
+        MediaAPIManager.shard.fetchMedia(api: .detail(id: id)) { result in
             TVData.detail = result
             group.leave()
         }
                                          
         group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .cast(id: 30983)) { result in
+        MediaAPIManager.shard.fetchMedia(api: .cast(id: id)) { result in
             TVData.cast = result
             group.leave()
         }
 
         group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .recommand(id: 30983)) { result in
+        MediaAPIManager.shard.fetchMedia(api: .recommand(id: id)) { result in
             TVData.recommand = result
             group.leave()
         }
@@ -73,7 +84,8 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: TVDetailTableViewCell.id, for: indexPath) as! TVDetailTableViewCell
             
             cell.configureCell(data: TVData.detail)
-            
+            cell.gesture.addTarget(self, action: #selector(dismissView))
+            cell.dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
             return cell
             
         } else if indexPath.row == 1 {
@@ -149,6 +161,12 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        id = TVData.recommand.results[indexPath.item].id
+        fetchData(id: id)
+        collectionView.reloadData()
     }
     
 }

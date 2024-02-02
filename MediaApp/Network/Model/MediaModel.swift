@@ -73,7 +73,7 @@ struct Result: Decodable {
         if nextEpisodeToAir != nil {
             return "\(firstAirDate) ~"
         } else {
-            return "\(firstAirDate) ~ \(String(describing: lastEpisodeToAir?.airDate))"
+            return "\(firstAirDate) ~ \(lastEpisodeToAir?.airDate ?? "" )"
         }
     }
 }

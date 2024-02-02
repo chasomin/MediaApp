@@ -11,6 +11,7 @@ import Kingfisher
 
 class TVDetailTableViewCell: BaseTableViewCell {
 
+    
     let backdropImageView = UIImageView()
     let posterImageView = UIImageView()
     let titleLabel = UILabel()
@@ -22,10 +23,11 @@ class TVDetailTableViewCell: BaseTableViewCell {
     let tvChannelLabel = UILabel()
     let tvChannelImageView = UIImageView()
     
-    
+    let gesture = UIPanGestureRecognizer()
+    let dismissButton = UIButton()
+
     
     override func configureHierarchy() {
-        
         contentView.addSubview(backdropImageView)
         contentView.addSubview(posterImageView)
         contentView.addSubview(titleLabel)
@@ -36,22 +38,31 @@ class TVDetailTableViewCell: BaseTableViewCell {
         contentView.addSubview(genreLabel)
         contentView.addSubview(tvChannelLabel)
         contentView.addSubview(tvChannelImageView)
+        
+        contentView.addGestureRecognizer(gesture)
+        contentView.addSubview(dismissButton)
 
     }
     
     override func configureLayout() {
+        dismissButton.snp.makeConstraints { make in
+            make.leading.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.height.equalTo(10)
+        }
         backdropImageView.snp.makeConstraints { make in
-            make.horizontalEdges.top.equalToSuperview()
+            make.top.equalTo(dismissButton.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         posterImageView.snp.makeConstraints { make in
-            make.leading.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.top.equalTo(dismissButton.snp.bottom).offset(20)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(130)
             make.width.equalTo(100)
         }
         titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(dismissButton.snp.bottom).offset(20)
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.top.equalToSuperview().inset(20)
             make.trailing.greaterThanOrEqualToSuperview().inset(20)
         }
         voteLabel.snp.makeConstraints { make in
@@ -78,13 +89,13 @@ class TVDetailTableViewCell: BaseTableViewCell {
         tvChannelLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(airDateLabel.snp.bottom).offset(5)
-            make.height.equalTo(30)
+            make.height.equalTo(20)
         }
         tvChannelImageView.snp.makeConstraints { make in
             make.leading.equalTo(tvChannelLabel.snp.trailing).offset(10)
             make.top.equalTo(airDateLabel.snp.bottom).offset(5)
             make.bottom.equalTo(tvChannelLabel.snp.bottom)
-            make.width.equalTo(tvChannelImageView.snp.height)
+            make.width.equalTo(30)
         }
         overviewLabel.snp.makeConstraints { make in
             
@@ -95,6 +106,9 @@ class TVDetailTableViewCell: BaseTableViewCell {
     }
     
     override func configureView() {
+        dismissButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        dismissButton.tintColor = .white
+        
         backdropImageView.contentMode = .scaleAspectFill
         backdropImageView.alpha = 0.3
         
@@ -112,11 +126,15 @@ class TVDetailTableViewCell: BaseTableViewCell {
         tvChannelLabel.setTVDetailLabel()
         
         tvChannelImageView.contentMode = .scaleAspectFit
+        tvChannelImageView.backgroundColor = .white
+        tvChannelImageView.alpha = 0.5
+        tvChannelImageView.layer.cornerRadius = 5
 
         overviewLabel.numberOfLines = 0
         overviewLabel.setTVDetailLabel()
         
     }
+    
 }
 
 extension TVDetailTableViewCell {

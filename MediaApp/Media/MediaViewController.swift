@@ -22,7 +22,7 @@ class MediaViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
 
@@ -102,5 +102,14 @@ extension MediaViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = TVDetailViewController()
+        
+        vc.id = dataList[collectionView.tag].results[indexPath.item].id
+        vc.navTitle = dataList[collectionView.tag].results[indexPath.item].name
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
     
 }

@@ -12,7 +12,7 @@ struct MediaAPIManager {
     static let shard = MediaAPIManager()
     private init() {}
     
-    func fetchMedia<T: Decodable>(api: MediaAPI, completionHandler: @escaping (T)->()) {
+    func fetchMedia<T: Decodable>(api: MediaAPI, completionHandler: @escaping (T) -> Void) {
         
         AF.request(api.endpoint,
                    method: api.method,
