@@ -12,8 +12,8 @@ import Kingfisher
 class TVDetailTableViewCell: BaseTableViewCell {
 
     
-    let backdropImageView = UIImageView()
-    let posterImageView = UIImageView()
+    let backdropImageView = BackdropImageView(frame: .zero)
+    let posterImageView = PosterImageView(frame: .zero)
     let titleLabel = UILabel()
     let airDateLabel = UILabel()
     let overviewLabel = UILabel()
@@ -61,7 +61,7 @@ class TVDetailTableViewCell: BaseTableViewCell {
             make.width.equalTo(100)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(dismissButton.snp.bottom).offset(20)
+            make.top.equalTo(posterImageView.snp.top)
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().inset(20)
         }
@@ -109,7 +109,6 @@ class TVDetailTableViewCell: BaseTableViewCell {
         dismissButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         dismissButton.tintColor = .white
         
-        backdropImageView.contentMode = .scaleAspectFill
         backdropImageView.alpha = 0.3
         
         posterImageView.contentMode = .scaleAspectFit
@@ -157,6 +156,10 @@ extension TVDetailTableViewCell {
         tvChannelLabel.text = data.networks?.first?.nameLabel
         tvChannelImageView.kf.setImage(with: tvChannerLogoURL)
         overviewLabel.text = data.overview
+        
+        if data.networks?.first?.logo == nil {
+            tvChannelImageView.isHidden = true
+        }
     }
 }
 

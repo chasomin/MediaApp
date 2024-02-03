@@ -11,7 +11,7 @@ import Kingfisher
 
 class MediaCollectionViewCell: BaseCollectionViewCell {
     
-    let posterImageView = PosterImageView(frame: .zero)
+    let posterImageView = BackdropImageView(frame: .zero)
     let voteAverageLabel = WhiteCapsuleSmallLabel()
     let nameLabel = UILabel()
     let dateLabel = UILabel()

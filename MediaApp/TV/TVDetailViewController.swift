@@ -95,6 +95,7 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(data: TVData.detail)
             cell.gesture.addTarget(self, action: #selector(dismissView))
             cell.dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+            
             return cell
             
         } else if indexPath.row == 1 {

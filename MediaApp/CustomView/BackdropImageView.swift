@@ -2,16 +2,16 @@
 //  PosterImageView.swift
 //  MediaApp
 //
-//  Created by 차소민 on 2/3/24.
+//  Created by 차소민 on 1/30/24.
 //
 
 import UIKit
 
-class PosterImageView: UIImageView {
+class BackdropImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentMode = .scaleAspectFit
+        contentMode = .scaleAspectFill
         clipsToBounds = true
 
     }
