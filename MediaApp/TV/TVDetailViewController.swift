@@ -49,6 +49,9 @@ extension TVDetailViewController {
         }
         
     }
+    @objc func dismissButtonTapped() {
+        dismiss(animated: true)
+    }
 
     func fetchData(id: Int, completion: @escaping (() -> Void)) {
         let group = DispatchGroup()
@@ -91,7 +94,7 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.configureCell(data: TVData.detail)
             cell.gesture.addTarget(self, action: #selector(dismissView))
-            cell.dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+            cell.dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
             return cell
             
         } else if indexPath.row == 1 {
@@ -173,9 +176,32 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
         let id = TVData.recommand.results[indexPath.item].id
         fetchData(id: id) {
             self.mainView.tableView.reloadData()
+            self.mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
-        self.mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 
     }
     
+}
+
+
+extension TVDetailViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if let cv = scrollView as? UICollectionView {
+            let layout = cv.collectionViewLayout as! UICollectionViewFlowLayout
+            let cellWidth = layout.itemSize.width + layout.minimumLineSpacing
+            
+            var offset = targetContentOffset.pointee
+            var index = round((offset.x + cv.contentInset.left) / cellWidth)
+            
+            if cv.contentOffset.x > targetContentOffset.pointee.x {
+                index = floor(index)
+            } else {
+                index = ceil(index)
+            }
+            
+            offset = CGPoint(x: index * cellWidth, y: -cv.contentInset.top)
+            targetContentOffset.pointee = offset
+            
+        }
+    }
 }

@@ -32,12 +32,14 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text else { return }
         
         let vc = TVDetailViewController()
+        vc.modalPresentationStyle = .fullScreen
         
         MediaAPIManager.shard.fetchMedia(api: .search(query: searchText)) { result in
             self.data = result
             vc.fetchData(id: self.data.results.first?.id ?? 0){
                 vc.navTitle = self.data.results.first?.name ?? ""
                 self.present(vc, animated: true)
+                searchBar.text = ""
             }
         }
         

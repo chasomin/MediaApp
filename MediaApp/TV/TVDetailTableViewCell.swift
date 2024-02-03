@@ -63,27 +63,27 @@ class TVDetailTableViewCell: BaseTableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(dismissButton.snp.bottom).offset(20)
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.trailing.greaterThanOrEqualToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
         voteLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
-            make.trailing.greaterThanOrEqualToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
         episodeRunTimeLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(voteLabel.snp.bottom).offset(5)
-            make.trailing.greaterThanOrEqualToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
         genreLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(episodeRunTimeLabel.snp.bottom).offset(5)
-            make.trailing.greaterThanOrEqualToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
         airDateLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(genreLabel.snp.bottom).offset(5)
-            make.trailing.greaterThanOrEqualToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
 
         }
         tvChannelLabel.snp.makeConstraints { make in
@@ -99,9 +99,9 @@ class TVDetailTableViewCell: BaseTableViewCell {
         }
         overviewLabel.snp.makeConstraints { make in
             
-            make.top.equalTo(posterImageView.snp.bottom).offset(10)
+            make.top.equalTo(tvChannelImageView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.bottom.equalTo(contentView.snp.bottom).inset(20)
+            make.bottom.greaterThanOrEqualTo(contentView.snp.bottom).inset(20)
         }
     }
     
@@ -117,11 +117,12 @@ class TVDetailTableViewCell: BaseTableViewCell {
         titleLabel.font = .boldSystemFont(ofSize: 15)
         titleLabel.textAlignment = .left
         titleLabel.textColor = .white
-        
+        titleLabel.numberOfLines = 2
         
         voteLabel.setTVDetailLabel()
         episodeRunTimeLabel.setTVDetailLabel()
         genreLabel.setTVDetailLabel()
+        genreLabel.numberOfLines = 1
         airDateLabel.setTVDetailLabel()
         tvChannelLabel.setTVDetailLabel()
         
@@ -130,7 +131,7 @@ class TVDetailTableViewCell: BaseTableViewCell {
         tvChannelImageView.alpha = 0.5
         tvChannelImageView.layer.cornerRadius = 5
 
-        overviewLabel.numberOfLines = 0
+        overviewLabel.numberOfLines = 4
         overviewLabel.setTVDetailLabel()
         
     }
@@ -146,7 +147,11 @@ extension TVDetailTableViewCell {
         posterImageView.kf.setImage(with: posterURL)
         titleLabel.text = data.titleLabel
         voteLabel.text = data.voteLable
-        episodeRunTimeLabel.text = data.runtime
+        if data.episodeRunTime?.first != nil {
+            episodeRunTimeLabel.text = data.runtime
+        } else {
+            episodeRunTimeLabel.isHidden = true
+        }
         genreLabel.text = data.genre
         airDateLabel.text = data.airData
         tvChannelLabel.text = data.networks?.first?.nameLabel
