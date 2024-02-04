@@ -25,14 +25,6 @@ class SearchResultViewController: UIViewController {
         mainView.collectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.id)
 
     }
-//    
-//    func fetchData() {
-//        MediaAPIManager.shard.fetchMedia(api: .search(query: query)) { result in
-//            self.data = result
-//        }
-//    }
-
-
 }
 
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -108,6 +108,7 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.register(TVCastCollectionViewCell.self, forCellWithReuseIdentifier: TVCastCollectionViewCell.id)
             
             cell.collectionView.reloadData()
+            cell.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
 
             return cell
         } else {
@@ -121,9 +122,8 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             cell.collectionView.register(MediaCollectionViewCell.self, forCellWithReuseIdentifier: MediaCollectionViewCell.id)
-
-            
             cell.collectionView.reloadData()
+            cell.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
             return cell
         }
     }
@@ -175,9 +175,13 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = TVData.recommand.results[indexPath.item].id
-        fetchData(id: id) {
-            self.mainView.tableView.reloadData()
-            self.mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        
+        if collectionView.tag == 2 {
+            fetchData(id: id) {
+                self.mainView.tableView.reloadData()
+                self.mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            }
+            
         }
 
     }
