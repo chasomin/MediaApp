@@ -27,9 +27,7 @@ class MediaView: BaseView {
         tableView.backgroundColor = .clear
         tableView.rowHeight = 400
         tableView.showsVerticalScrollIndicator = false
-        
-        tableView.separatorStyle = .none
-        
+        tableView.separatorStyle = .none        
         tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.id)
     }
 

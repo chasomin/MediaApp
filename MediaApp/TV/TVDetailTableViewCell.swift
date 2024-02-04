@@ -64,26 +64,31 @@ class TVDetailTableViewCell: BaseTableViewCell {
             make.top.equalTo(posterImageView.snp.top)
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(36)
         }
         voteLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(13)
         }
         episodeRunTimeLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(voteLabel.snp.bottom).offset(5)
             make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(13)
         }
         genreLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(episodeRunTimeLabel.snp.bottom).offset(5)
             make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(13)
         }
         airDateLabel.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
             make.top.equalTo(genreLabel.snp.bottom).offset(5)
             make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(13)
 
         }
         tvChannelLabel.snp.makeConstraints { make in
@@ -146,16 +151,12 @@ extension TVDetailTableViewCell {
         posterImageView.kf.setImage(with: posterURL)
         titleLabel.text = data.titleLabel
         voteLabel.text = data.voteLable
-        if data.episodeRunTime?.first != nil {
-            episodeRunTimeLabel.text = data.runtime
-        } else {
-            episodeRunTimeLabel.isHidden = true
-        }
+        episodeRunTimeLabel.text = data.runtime
         genreLabel.text = data.genre
         airDateLabel.text = data.airData
         tvChannelLabel.text = data.networks?.first?.nameLabel
         tvChannelImageView.kf.setImage(with: tvChannerLogoURL)
-        overviewLabel.text = data.overview
+        overviewLabel.text = data.overviewLabel
         
         if data.networks?.first?.logo == nil {
             tvChannelImageView.isHidden = true

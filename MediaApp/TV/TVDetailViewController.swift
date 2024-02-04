@@ -53,7 +53,7 @@ extension TVDetailViewController {
         dismiss(animated: true)
     }
 
-    func fetchData(id: Int, completion: @escaping (() -> Void)) {
+    func fetchData(id: Int, completionHandler: @escaping (() -> Void)) {
         let group = DispatchGroup()
         
         group.enter()
@@ -77,7 +77,7 @@ extension TVDetailViewController {
 
         group.notify(queue: .main) {
             self.mainView.tableView.reloadData()
-            completion()
+            completionHandler()
         }
 
     }
@@ -178,7 +178,6 @@ extension TVDetailViewController: UICollectionViewDelegate, UICollectionViewData
         
         if collectionView.tag == 2 {
             fetchData(id: id) {
-                self.mainView.tableView.reloadData()
                 self.mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             }
             

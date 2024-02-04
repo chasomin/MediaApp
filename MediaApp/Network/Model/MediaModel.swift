@@ -55,7 +55,11 @@ struct Result: Decodable {
     }
     
     var runtime: String {
-        return "회차 당 \(episodeRunTime?.first ?? 0)분"
+        if let runtime = episodeRunTime?.first{
+            return "회차 당 \(runtime)분"
+        } else {
+            return "평균 러닝타임이 제공되지 않습니다"
+        }
     }
 
     var genre: String {
@@ -74,6 +78,14 @@ struct Result: Decodable {
             return "\(firstAirDate) ~"
         } else {
             return "\(firstAirDate) ~ \(lastEpisodeToAir?.airDate ?? "" )"
+        }
+    }
+    
+    var overviewLabel: String {
+        if overview == "" {
+            return "제공되는 줄거리가 없습니다"
+        } else {
+            return overview
         }
     }
 }

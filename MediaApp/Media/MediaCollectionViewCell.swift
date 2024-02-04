@@ -85,7 +85,7 @@ extension MediaCollectionViewCell {
     func configureCell(item: [Result], url: URL?, index: Int) {
         posterImageView.kf.setImage(with: url, placeholder: Constants.Image.PlaceholderImage.image)
         nameLabel.text = item[index].name
-        overviewLabel.text = item[index].overview
+        overviewLabel.text = item[index].overviewLabel
         dateLabel.text = item[index].firstAirDate
         voteAverageLabel.text = String(item[index].vote)
         
