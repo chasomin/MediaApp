@@ -95,7 +95,7 @@ struct Genre: Decodable {
 }
 
 struct Network: Decodable {
-    let logo: String
+    let logo: String?
     let name: String
     
     enum CodingKeys: String, CodingKey {

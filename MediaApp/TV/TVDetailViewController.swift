@@ -13,6 +13,13 @@ enum TVData {
     static var recommand =  Media(results: [])
     
     static let all: [Any] = [TVData.detail, TVData.cast, TVData.recommand]
+    
+    
+    static let detailType = Result.self
+    static let caseType = AggregateCredits.self
+    static let recommandType = Media.self
+
+    
 }
 
 
@@ -58,21 +65,34 @@ extension TVDetailViewController {
         
         group.enter()
         
-        MediaAPIManager.shard.fetchMedia(api: .detail(id: id)) { result in
-            TVData.detail = result
-            group.leave()
-        }
-                                         
-        group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .cast(id: id)) { result in
-            TVData.cast = result
-            group.leave()
+        MediaSessionManager.shared.request(api: .detail(id: id), type: TVData.detailType) { result, error in
+            if error == nil {
+                guard let result else { return }
+                TVData.detail = result
+                group.leave()
+            } else {
+                
+            }
         }
 
         group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .recommand(id: id)) { result in
-            TVData.recommand = result
-            group.leave()
+        MediaSessionManager.shared.request(api: .cast(id: id), type: TVData.caseType) { result, error in
+            if error == nil {
+                guard let result else { return }
+                TVData.cast = result
+                group.leave()
+            } else {
+                
+            }
+        }
+
+        group.enter()
+        MediaSessionManager.shared.request(api: .recommand(id: id), type: TVData.recommandType) { result, error in
+            if error == nil {
+                guard let result else { return }
+                TVData.recommand = result
+                group.leave()
+            }
         }
 
         group.notify(queue: .main) {

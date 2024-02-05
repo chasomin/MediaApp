@@ -12,22 +12,22 @@ struct MediaAPIManager {
     static let shard = MediaAPIManager()
     private init() {}
     
-    func fetchMedia<T: Decodable>(api: MediaAPI, completionHandler: @escaping (T) -> Void) {
-        
-        AF.request(api.endpoint,
-                   method: api.method,
-                   parameters: api.parameter,
-                   encoding: api.encoding,
-                   headers: api.header)
-            .responseDecodable(of: T.self) { response in
-                switch response.result {
-                case .success(let success):
-                    completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-    }
+//    func fetchMedia<T: Decodable>(api: MediaAPI, completionHandler: @escaping (T) -> Void) {
+//        
+//        AF.request(api.endpoint,
+//                   method: api.method,
+//                   parameters: api.parameter,
+//                   encoding: api.encoding,
+//                   headers: api.header)
+//            .responseDecodable(of: T.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//    }
     
     
 //    func fetchTrendingTV(api: MediaAPI, completionHandler: @escaping (Media)->()) {
