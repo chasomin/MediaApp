@@ -77,14 +77,12 @@ class SearchView: BaseView {
     }
     
     override func configureView() {
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        
+
         searchBar.placeholder = "TV 프로그램을 검색해보세요"
         searchBar.barTintColor = .clear
         
         recentLable.text = "최근 검색"
-        recentLable.font = .systemFont(ofSize: 13)
+        recentLable.font = .boldSystemFont(ofSize: 13)
         recentLable.textColor = .white
         
         deleteAllButton.setTitle("모두 지우기", for: .normal)
@@ -92,9 +90,10 @@ class SearchView: BaseView {
         deleteAllButton.contentHorizontalAlignment = .trailing
         deleteAllButton.setTitleColor(.accent, for: .normal)
         
-        tableView.backgroundColor = .clear
         tableView.tableHeaderView?.backgroundColor = .clear
-        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = .black
+
         emptyView.backgroundColor = .clear
         
         emptyImageView.image = UIImage(systemName: "exclamationmark.magnifyingglass")

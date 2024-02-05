@@ -12,13 +12,14 @@ class SearchResultViewController: UIViewController {
     let mainView = SearchResultView()
     
     var data = Media(results: [])
-    
+    var navigationTitle: String = ""
     override func loadView() {
         view = mainView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = navigationTitle
         
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
