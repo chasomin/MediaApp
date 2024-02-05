@@ -27,6 +27,8 @@ class MediaViewController: BaseViewController {
         mainView.tableView.dataSource = self
 
         fetchData()
+        
+
 
     }
     
@@ -38,22 +40,55 @@ extension MediaViewController {
         let group = DispatchGroup()
         
         group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .trend) { result in
-            self.dataList[0] = result
+//        MediaAPIManager.shard.fetchMedia(api: .trend) { result in
+//            self.dataList[0] = result
+//            group.leave()
+//        }
+        
+        MediaSessionManager.shared.request(api: .trend, type: Media.self) { result, error in
+            if error == nil {
+                guard let result else { return }
+                self.dataList[0] = result
+                self.mainView.tableView.reloadData()
+            } else {
+                // TODO: Alert
+            }
             group.leave()
         }
         
         group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .topRated) { result in
-            self.dataList[1] = result
+//        MediaAPIManager.shard.fetchMedia(api: .topRated) { result in
+//            self.dataList[1] = result
+//            group.leave()
+//        }
+        MediaSessionManager.shared.request(api: .topRated, type: Media.self) { result, error in
+            if error == nil {
+                guard let result else { return }
+                self.dataList[1] = result
+                self.mainView.tableView.reloadData()
+            } else {
+                // TODO: Alert
+            }
             group.leave()
         }
         
+        
         group.enter()
-        MediaAPIManager.shard.fetchMedia(api: .popular) { result in
-            self.dataList[2] = result
+//        MediaAPIManager.shard.fetchMedia(api: .popular) { result in
+//            self.dataList[2] = result
+//            group.leave()
+//        }
+        MediaSessionManager.shared.request(api: .popular, type: Media.self) { result, error in
+            if error == nil {
+                guard let result else { return }
+                self.dataList[2] = result
+                self.mainView.tableView.reloadData()
+            } else {
+                // TODO: Alert
+            }
             group.leave()
         }
+
         
         group.notify(queue: .main) {
             self.mainView.tableView.reloadData()
