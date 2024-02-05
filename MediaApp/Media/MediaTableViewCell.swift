@@ -15,10 +15,10 @@ class MediaTableViewCell: BaseTableViewCell {
     
     static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 370)
-        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 340)
+        layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.scrollDirection = .horizontal
         
         return layout

@@ -11,7 +11,7 @@ class PosterImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentMode = .scaleAspectFit
+        contentMode = .scaleAspectFill
         clipsToBounds = true
 
     }

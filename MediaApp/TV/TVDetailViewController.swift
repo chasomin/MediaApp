@@ -85,7 +85,13 @@ extension TVDetailViewController {
 
 extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        TVData.all.count
+        if TVData.recommand.results.isEmpty {
+            TVData.all.count - 1
+
+        } else {
+            TVData.all.count
+            
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {

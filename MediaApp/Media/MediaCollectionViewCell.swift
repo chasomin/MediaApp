@@ -32,7 +32,7 @@ class MediaCollectionViewCell: BaseCollectionViewCell {
     
     override func configureLayout() {
         view.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.edges.equalToSuperview()
         }
         posterImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view)

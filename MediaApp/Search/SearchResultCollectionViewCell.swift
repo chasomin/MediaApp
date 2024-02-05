@@ -34,6 +34,8 @@ class SearchResultCollectionViewCell: BaseCollectionViewCell {
         nameLabel.textAlignment = .left
         nameLabel.numberOfLines = 1
         nameLabel.font = .systemFont(ofSize: 13)
+        
+        posterImageView.layer.cornerRadius = 5
     }
     
     
