@@ -63,6 +63,25 @@ enum MediaAPI {
         }
     }
     
+    var query: [URLQueryItem] {
+        switch self {
+        case .trend, .topRated, .popular, .detail, .recommand :
+            [
+                URLQueryItem(name: "language", value: "ko-KR")
+            ]
+        case .cast:
+            [
+                URLQueryItem(name: "", value: "")
+            ]
+
+        case .search(let query):
+            [
+                URLQueryItem(name: "language", value: "ko-KR"),
+                URLQueryItem(name: "query", value: query)
+            ]
+        }
+    }
+    
     var encoding: ParameterEncoding {
         URLEncoding(destination: .queryString)
     }
