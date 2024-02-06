@@ -70,8 +70,14 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-        
-        UserDefaultsManager.shared.search.insert(searchText, at: 0)
+        if !UserDefaultsManager.shared.search.contains(searchText) {
+            UserDefaultsManager.shared.search.insert(searchText, at: 0)
+        } else {
+            if let index = UserDefaultsManager.shared.search.firstIndex(of: searchText) {
+                UserDefaultsManager.shared.search.remove(at: index)
+            }
+            UserDefaultsManager.shared.search.insert(searchText, at: 0)
+        }
         
         let vc = SearchResultViewController()
         
@@ -120,6 +126,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 vc.data = result
                 vc.navigationTitle = searchText
                 self.navigationController?.pushViewController(vc, animated: true)
+                
+                if let index = UserDefaultsManager.shared.search.firstIndex(of: searchText) {
+                    UserDefaultsManager.shared.search.remove(at: index)
+                }
+                UserDefaultsManager.shared.search.insert(searchText, at: 0)
+                self.mainView.tableView.reloadData()
             } else {
             }
         }
