@@ -22,6 +22,7 @@ final class TVDetailTableViewCell: BaseTableViewCell {
     let genreLabel = UILabel()
     let tvChannelLabel = UILabel()
     let tvChannelImageView = UIImageView()
+    let videoButton = UIButton()
     
     let gesture = UIPanGestureRecognizer()
     let dismissButton = UIButton()
@@ -41,21 +42,22 @@ final class TVDetailTableViewCell: BaseTableViewCell {
         
         contentView.addGestureRecognizer(gesture)
         contentView.addSubview(dismissButton)
+        contentView.addSubview(videoButton)
 
     }
     
     override func configureLayout() {
         dismissButton.snp.makeConstraints { make in
             make.leading.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
-            make.height.equalTo(10)
+            make.height.equalTo(20)
         }
         backdropImageView.snp.makeConstraints { make in
-            make.top.equalTo(dismissButton.snp.bottom)
+            make.top.equalTo(contentView)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         posterImageView.snp.makeConstraints { make in
-            make.top.equalTo(dismissButton.snp.bottom).offset(20)
+            make.top.equalTo(dismissButton.snp.bottom).offset(10)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(130)
             make.width.equalTo(100)
@@ -102,9 +104,17 @@ final class TVDetailTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(tvChannelLabel.snp.bottom)
             make.width.equalTo(30)
         }
+        
+        videoButton.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.trailing.equalTo(contentView).inset(10)
+            make.height.equalTo(20)
+        }
+        
+        
         overviewLabel.snp.makeConstraints { make in
             
-            make.top.equalTo(tvChannelImageView.snp.bottom).offset(10)
+            make.top.equalTo(tvChannelLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.bottom.greaterThanOrEqualTo(contentView.snp.bottom).inset(20)
         }
@@ -135,6 +145,9 @@ final class TVDetailTableViewCell: BaseTableViewCell {
         tvChannelImageView.alpha = 0.5
         tvChannelImageView.layer.cornerRadius = 5
 
+        videoButton.setImage(UIImage(systemName: "play.rectangle"), for: .normal)
+        videoButton.tintColor = .white
+        
         overviewLabel.numberOfLines = 4
         overviewLabel.setTVDetailLabel()
         

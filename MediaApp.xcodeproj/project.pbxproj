@@ -34,6 +34,9 @@
 		793F22FE2B73753E00698E43 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F22FD2B73753E00698E43 /* ProfileTableViewCell.swift */; };
 		793F23022B7383FA00698E43 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23012B7383FA00698E43 /* EditViewController.swift */; };
 		793F23042B73859700698E43 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23032B73859700698E43 /* EditView.swift */; };
+		793F23062B73AFB800698E43 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23052B73AFB800698E43 /* VideoModel.swift */; };
+		793F23082B73B15400698E43 /* VideoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23072B73B15400698E43 /* VideoWebViewController.swift */; };
+		793F230A2B73B3DD00698E43 /* VideoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23092B73B3DD00698E43 /* VideoWebView.swift */; };
 		796FFDDB2B68E77E00C3DE08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDA2B68E77E00C3DE08 /* SnapKit */; };
 		796FFDDD2B68E77E00C3DE08 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */; };
 		796FFDDF2B68ED9A00C3DE08 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */; };
@@ -85,6 +88,9 @@
 		793F22FD2B73753E00698E43 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		793F23012B7383FA00698E43 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		793F23032B73859700698E43 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		793F23052B73AFB800698E43 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		793F23072B73B15400698E43 /* VideoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebViewController.swift; sourceTree = "<group>"; };
+		793F23092B73B3DD00698E43 /* VideoWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebView.swift; sourceTree = "<group>"; };
 		796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		796FFDE02B68EDB600C3DE08 /* CodeBaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseViewProtocol.swift; sourceTree = "<group>"; };
 		796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 				7921B6D02B6A284600848184 /* TVDetailTableViewCell.swift */,
 				7921B6CE2B6A26AB00848184 /* TVCastTableViewCell.swift */,
 				7921B6D22B6A2A3C00848184 /* TVCastCollectionViewCell.swift */,
+				793F23072B73B15400698E43 /* VideoWebViewController.swift */,
+				793F23092B73B3DD00698E43 /* VideoWebView.swift */,
 			);
 			path = TV;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				796FFDE62B68F74100C3DE08 /* MediaModel.swift */,
+				793F23052B73AFB800698E43 /* VideoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,12 +388,14 @@
 				7921B6E12B6B79AB00848184 /* TVDetailView.swift in Sources */,
 				7921B7072B6CD2B100848184 /* SearchViewController.swift in Sources */,
 				7921B6CF2B6A26AB00848184 /* TVCastTableViewCell.swift in Sources */,
+				793F23082B73B15400698E43 /* VideoWebViewController.swift in Sources */,
 				793F22FC2B73739B00698E43 /* CircleImageView.swift in Sources */,
 				793F224D2B6E48CC00698E43 /* PosterImageView.swift in Sources */,
 				793F22562B70FAA000698E43 /* SearchTableViewCell.swift in Sources */,
 				7921B6DF2B6B793400848184 /* BaseView.swift in Sources */,
 				7921B6CA2B6A1C0100848184 /* BaseViewController.swift in Sources */,
 				7921B6D52B6A473700848184 /* UILabel+Extension.swift in Sources */,
+				793F230A2B73B3DD00698E43 /* VideoWebView.swift in Sources */,
 				7921B6D12B6A284600848184 /* TVDetailTableViewCell.swift in Sources */,
 				796FFDF22B69209200C3DE08 /* BackdropImageView.swift in Sources */,
 				796FFDE12B68EDB600C3DE08 /* CodeBaseViewProtocol.swift in Sources */,
@@ -397,6 +408,7 @@
 				793F23042B73859700698E43 /* EditView.swift in Sources */,
 				793F23022B7383FA00698E43 /* EditViewController.swift in Sources */,
 				796FFDEC2B691D0200C3DE08 /* Constans.swift in Sources */,
+				793F23062B73AFB800698E43 /* VideoModel.swift in Sources */,
 				793F22492B6E3AFB00698E43 /* SearchResultView.swift in Sources */,
 				793F22472B6E3AD700698E43 /* SearchResultViewController.swift in Sources */,
 				793F22542B70E47E00698E43 /* UserDefaultsManager.swift in Sources */,

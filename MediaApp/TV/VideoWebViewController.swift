@@ -7,23 +7,30 @@
 
 import UIKit
 
+//TODO: 빈 값이 들어올때 처리, 유튜브 넘겨줄 때 로딩뷰??
 class VideoWebViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    let mainView = VideoWebView()
+    var videoKey = ""
+    
+    lazy var url = "https://www.youtube.com/watch?v=\(videoKey)"
+    
+    override func loadView() {
+        view = mainView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        setWebView()
     }
-    */
+    
+    func setWebView() {
+        if let url = URL(string: url) {
+            let url = URLRequest(url: url)
+            mainView.webView.load(url)
+        }
+        
+    }
 
 }

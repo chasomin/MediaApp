@@ -59,6 +59,15 @@ extension TVDetailViewController {
     @objc func dismissButtonTapped() {
         dismiss(animated: true)
     }
+    
+    @objc func videoButtonTapped() {
+        print(#function)
+        MediaSessionManager.shared.request(api: .video(id: TVData.detail.id), type: Video.self) { result, error in
+            let vc = VideoWebViewController()
+            vc.videoKey = result?.results.first?.key ?? ""
+            self.present(vc, animated: true)
+        }
+    }
 
     func fetchData(id: Int, completionHandler: @escaping (() -> Void)) {
         let group = DispatchGroup()
@@ -121,6 +130,7 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(data: TVData.detail)
             cell.gesture.addTarget(self, action: #selector(dismissView))
             cell.dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+            cell.videoButton.addTarget(self, action: #selector(videoButtonTapped), for: .touchUpInside)
             
             return cell
             
@@ -156,7 +166,7 @@ extension TVDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            250
+            260
         } else if indexPath.row == 1{
             250
         } else {
