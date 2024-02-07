@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WhiteCapsuleSmallLabel: UILabel {
+final class WhiteCapsuleSmallLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

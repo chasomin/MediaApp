@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class MediaView: BaseView {
+final class MediaView: BaseView {
  
     let tableView = UITableView()
             

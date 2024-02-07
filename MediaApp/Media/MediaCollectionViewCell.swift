@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class MediaCollectionViewCell: BaseCollectionViewCell {
+final class MediaCollectionViewCell: BaseCollectionViewCell {
     
     let posterImageView = BackdropImageView(frame: .zero)
     let voteAverageLabel = WhiteCapsuleSmallLabel()

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TVDetailView: BaseView {
+final class TVDetailView: BaseView {
     let tableView = UITableView()
 
     override func configureHierarchy() {

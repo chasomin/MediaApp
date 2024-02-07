@@ -23,7 +23,7 @@ enum TVData {
 }
 
 
-class TVDetailViewController: BaseViewController {
+final class TVDetailViewController: BaseViewController {
     var navTitle = ""
     
     let mainView = TVDetailView()

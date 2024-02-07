@@ -8,12 +8,12 @@
 import UIKit
 import SnapKit
 
-class SearchResultView: BaseView {
+final class SearchResultView: BaseView {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
     
-    static func collectionViewLayout() -> UICollectionViewLayout {
+    private static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - (spacing)*4) / 3 , height: 200)

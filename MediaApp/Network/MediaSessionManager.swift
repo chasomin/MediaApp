@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MediaSessionManager {
+final class MediaSessionManager {
     static let shared = MediaSessionManager()
     private init() { }
 

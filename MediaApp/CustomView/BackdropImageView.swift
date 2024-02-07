@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BackdropImageView: UIImageView {
+final class BackdropImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

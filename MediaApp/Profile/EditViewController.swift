@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
+final class EditViewController: UIViewController {
     
     let mainView = EditView()
     

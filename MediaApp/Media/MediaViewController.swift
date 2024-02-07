@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MediaViewController: BaseViewController {
+final class MediaViewController: BaseViewController {
     let mainView = MediaView()
     
     var dataList = [
@@ -36,7 +36,7 @@ class MediaViewController: BaseViewController {
 
 extension MediaViewController {
     
-    func fetchData() {
+    private func fetchData() {
         let group = DispatchGroup()
         
         group.enter()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     let mainView = SearchView()
     
@@ -41,7 +41,7 @@ class SearchViewController: UIViewController {
         searchHistoryCheck()
     }
     
-    func searchHistoryCheck() {
+    private func searchHistoryCheck() {
         if UserDefaultsManager.shared.search.isEmpty {
             mainView.tableView.isHidden = true
             mainView.recentView.isHidden = true

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class TVCastCollectionViewCell: BaseCollectionViewCell {
+final class TVCastCollectionViewCell: BaseCollectionViewCell {
     
     let imageView: UIImageView = {
         let view = UIImageView()

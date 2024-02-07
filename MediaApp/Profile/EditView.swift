@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class EditView: BaseView {
+final class EditView: BaseView {
     
     let descriptionLabel = UILabel()
     let textField = UITextField()

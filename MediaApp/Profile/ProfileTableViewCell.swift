@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileTableViewCell: BaseTableViewCell {
+final class ProfileTableViewCell: BaseTableViewCell {
     
     let titleLabel = UILabel()
     let textField = UITextField()

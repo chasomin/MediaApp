@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TVCastTableViewCell: BaseTableViewCell {
+final class TVCastTableViewCell: BaseTableViewCell {
     let label = UILabel()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     

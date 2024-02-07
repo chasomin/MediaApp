@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class TVDetailTableViewCell: BaseTableViewCell {
+final class TVDetailTableViewCell: BaseTableViewCell {
 
     
     let backdropImageView = BackdropImageView(frame: .zero)

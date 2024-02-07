@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SearchView: BaseView {
+final class SearchView: BaseView {
     let recentView = UIView()
     let recentLable = UILabel()
     let deleteAllButton = UIButton()
@@ -32,11 +32,7 @@ class SearchView: BaseView {
     }
     
     override func configureLayout() {
-//        searchBar.snp.makeConstraints { make in
-//            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-//            make.height.equalTo(56)
-//        }
-        
+
         recentView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview()

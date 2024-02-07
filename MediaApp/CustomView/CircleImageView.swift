@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CircleImageView: UIImageView {
+final class CircleImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

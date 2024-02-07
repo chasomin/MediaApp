@@ -8,12 +8,12 @@
 import UIKit
 import SnapKit
 
-class MediaTableViewCell: BaseTableViewCell {
+final class MediaTableViewCell: BaseTableViewCell {
     
     let label = UILabel()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
-    static func collectionViewLayout() -> UICollectionViewLayout {
+    private static func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 340)
         layout.minimumLineSpacing = 10
