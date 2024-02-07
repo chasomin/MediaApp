@@ -21,13 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBar = UITabBarController()
         
         let mediaViewController = MediaViewController()
-
         let searchViewController = UINavigationController(rootViewController: SearchViewController())
+        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
         
         mediaViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         searchViewController.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+        profileViewController.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
 
-        tabBar.viewControllers = [mediaViewController, searchViewController]
+        tabBar.viewControllers = [mediaViewController, searchViewController, profileViewController]
         
         window?.rootViewController = tabBar
         

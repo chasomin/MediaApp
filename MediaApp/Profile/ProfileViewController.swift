@@ -8,22 +8,76 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    let mainView = ProfileView()
+    
+    let navigationTitle: [String] = ["이름", "닉네임", "성별", "소개"]
+    
+    var userInput = [0: "", 1: "", 2: "", 3: ""]
+    
+    override func loadView() {
+        view = mainView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "프로필 편집"
+        navigationItem.backButtonDisplayMode = .minimal
 
-    /*
-    // MARK: - Navigation
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        
+        mainView.tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.id)
+        
+        mainView.tapGesture.addTarget(self, action: #selector(tapGestureTapped))
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+    @objc func tapGestureTapped() {
+        print("===")
+    }
+
+}
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.id) as? ProfileTableViewCell else {
+            print("빈 셀")
+            return UITableViewCell()
+        }
+        
+        cell.textField.placeholder = navigationTitle[indexPath.row]
+        cell.titleLabel.text = navigationTitle[indexPath.row]
+        
+        
+        cell.accessoryType = .disclosureIndicator
+        
+        cell.textField.text = userInput[indexPath.row]
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = EditViewController()
+        
+        vc.navigationItem.title = navigationTitle[indexPath.row]
+        vc.mainView.textField.placeholder = navigationTitle[indexPath.row]
+        vc.mainView.descriptionLabel.text = navigationTitle[indexPath.row]
+
+
+        vc.mainView.textField.text = userInput[indexPath.row]
+        vc.userInputText = { value in
+            self.userInput.updateValue(value, forKey: indexPath.row)
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }
