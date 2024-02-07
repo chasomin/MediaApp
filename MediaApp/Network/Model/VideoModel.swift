@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Video: Decodable {
+    let results: [VideoResult]
+}
+
+struct VideoResult: Decodable {
+    let key: String
+}
