@@ -6,6 +6,7 @@
 //
 
 import Foundation
+//TODO: 에러 상황별로 나눠보기 enum
 
 final class MediaSessionManager {
     static let shared = MediaSessionManager()
@@ -53,7 +54,6 @@ final class MediaSessionManager {
                 do {
                     let result = try JSONDecoder().decode(T.self, from: data)
                     completionHandler(result, nil)
-                    print(result)
                 } catch {
                     completionHandler(nil, error)
                     print(error)

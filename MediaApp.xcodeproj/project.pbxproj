@@ -37,8 +37,9 @@
 		793F23062B73AFB800698E43 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23052B73AFB800698E43 /* VideoModel.swift */; };
 		793F23082B73B15400698E43 /* VideoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23072B73B15400698E43 /* VideoWebViewController.swift */; };
 		793F230A2B73B3DD00698E43 /* VideoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F23092B73B3DD00698E43 /* VideoWebView.swift */; };
-		796FFDDB2B68E77E00C3DE08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDA2B68E77E00C3DE08 /* SnapKit */; };
-		796FFDDD2B68E77E00C3DE08 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */; };
+		793F230D2B73D3A700698E43 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 793F230C2B73D3A700698E43 /* Toast */; };
+		793F230F2B73D3C300698E43 /* UIViewcontroller+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F230E2B73D3C300698E43 /* UIViewcontroller+Extension.swift */; };
+		793F23152B73D80100698E43 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 793F23142B73D80100698E43 /* SnapKit */; };
 		796FFDDF2B68ED9A00C3DE08 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */; };
 		796FFDE12B68EDB600C3DE08 /* CodeBaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDE02B68EDB600C3DE08 /* CodeBaseViewProtocol.swift */; };
 		796FFDE32B68EEDB00C3DE08 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */; };
@@ -91,6 +92,7 @@
 		793F23052B73AFB800698E43 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		793F23072B73B15400698E43 /* VideoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebViewController.swift; sourceTree = "<group>"; };
 		793F23092B73B3DD00698E43 /* VideoWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWebView.swift; sourceTree = "<group>"; };
+		793F230E2B73D3C300698E43 /* UIViewcontroller+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller+Extension.swift"; sourceTree = "<group>"; };
 		796FFDDE2B68ED9A00C3DE08 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		796FFDE02B68EDB600C3DE08 /* CodeBaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseViewProtocol.swift; sourceTree = "<group>"; };
 		796FFDE22B68EEDB00C3DE08 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,10 +119,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796FFDDB2B68E77E00C3DE08 /* SnapKit in Frameworks */,
 				79892C1E2B581A6700904F52 /* Kingfisher in Frameworks */,
+				793F23152B73D80100698E43 /* SnapKit in Frameworks */,
 				79892C132B580E8F00904F52 /* Alamofire in Frameworks */,
-				796FFDDD2B68E77E00C3DE08 /* SnapKit-Dynamic in Frameworks */,
+				793F230D2B73D3A700698E43 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,7 @@
 			children = (
 				79892C1A2B5810C900904F52 /* Identifier.swift */,
 				7921B6D42B6A473700848184 /* UILabel+Extension.swift */,
+				793F230E2B73D3C300698E43 /* UIViewcontroller+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -313,8 +316,8 @@
 			packageProductDependencies = (
 				79892C122B580E8F00904F52 /* Alamofire */,
 				79892C1D2B581A6700904F52 /* Kingfisher */,
-				796FFDDA2B68E77E00C3DE08 /* SnapKit */,
-				796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */,
+				793F230C2B73D3A700698E43 /* Toast */,
+				793F23142B73D80100698E43 /* SnapKit */,
 			);
 			productName = MediaApp;
 			productReference = 79892BF02B580B5200904F52 /* MediaApp.app */;
@@ -347,7 +350,8 @@
 			packageReferences = (
 				79892C112B580E8F00904F52 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				79892C1C2B581A6700904F52 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				796FFDD92B68E77E00C3DE08 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				793F230B2B73D3A700698E43 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				793F23132B73D80100698E43 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 79892BF12B580B5200904F52 /* Products */;
 			projectDirPath = "";
@@ -397,6 +401,7 @@
 				7921B6D52B6A473700848184 /* UILabel+Extension.swift in Sources */,
 				793F230A2B73B3DD00698E43 /* VideoWebView.swift in Sources */,
 				7921B6D12B6A284600848184 /* TVDetailTableViewCell.swift in Sources */,
+				793F230F2B73D3C300698E43 /* UIViewcontroller+Extension.swift in Sources */,
 				796FFDF22B69209200C3DE08 /* BackdropImageView.swift in Sources */,
 				796FFDE12B68EDB600C3DE08 /* CodeBaseViewProtocol.swift in Sources */,
 				79892C0A2B580DD000904F52 /* APIKey.swift in Sources */,
@@ -654,7 +659,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		796FFDD92B68E77E00C3DE08 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		793F230B2B73D3A700698E43 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		793F23132B73D80100698E43 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -681,15 +694,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		796FFDDA2B68E77E00C3DE08 /* SnapKit */ = {
+		793F230C2B73D3A700698E43 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 796FFDD92B68E77E00C3DE08 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
+			package = 793F230B2B73D3A700698E43 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
-		796FFDDC2B68E77E00C3DE08 /* SnapKit-Dynamic */ = {
+		793F23142B73D80100698E43 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 796FFDD92B68E77E00C3DE08 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
+			package = 793F23132B73D80100698E43 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		79892C122B580E8F00904F52 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

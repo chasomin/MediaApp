@@ -34,7 +34,7 @@ final class ProfileViewController: UIViewController {
     }
 
     @objc func tapGestureTapped() {
-        print("===")
+        //TODO: Image API
     }
 
 }

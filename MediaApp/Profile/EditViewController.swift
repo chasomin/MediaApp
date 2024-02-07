@@ -24,9 +24,7 @@ final class EditViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print(mainView.textField.text!)
         userInputText?(mainView.textField.text!)
-        
     }
     
 

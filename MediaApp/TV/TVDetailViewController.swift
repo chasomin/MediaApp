@@ -61,11 +61,19 @@ extension TVDetailViewController {
     }
     
     @objc func videoButtonTapped() {
-        print(#function)
         MediaSessionManager.shared.request(api: .video(id: TVData.detail.id), type: Video.self) { result, error in
-            let vc = VideoWebViewController()
-            vc.videoKey = result?.results.first?.key ?? ""
-            self.present(vc, animated: true)
+            if error == nil {
+                guard let result else { return }
+                if !result.results.isEmpty {
+                    let vc = VideoWebViewController()
+                    vc.videoKey = result.results.first?.key ?? ""
+                    self.present(vc, animated: true)
+                } else {
+                    self.showToast(text: "비디오가 제공되지 않습니다")
+                }
+            } else {
+                self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
+            }
         }
     }
 
@@ -80,7 +88,8 @@ extension TVDetailViewController {
                 TVData.detail = result
                 group.leave()
             } else {
-                
+                //TODO: 에러 상황별로 나눠보기 enum
+                self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
         }
 
@@ -91,7 +100,8 @@ extension TVDetailViewController {
                 TVData.cast = result
                 group.leave()
             } else {
-                
+                //TODO: 에러 상황별로 나눠보기 enum
+                self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
         }
 
@@ -101,6 +111,9 @@ extension TVDetailViewController {
                 guard let result else { return }
                 TVData.recommand = result
                 group.leave()
+            } else {
+                //TODO: 에러 상황별로 나눠보기 enum
+                self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
         }
 

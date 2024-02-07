@@ -49,15 +49,7 @@ enum MediaAPI {
     
     var parameter: Parameters {
         switch self {
-        case .trend:
-            ["language":"ko-KR"]
-        case .topRated:
-            ["language":"ko-KR"]
-        case .popular:
-            ["language":"ko-KR"]
-        case .detail:
-            ["language":"ko-KR"]
-        case .recommand:
+        case .trend, .topRated, .popular, .detail, .recommand:
             ["language":"ko-KR"]
         case .cast, .video:
             ["":""]
