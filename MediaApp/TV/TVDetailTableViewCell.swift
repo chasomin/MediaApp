@@ -27,19 +27,27 @@ final class TVDetailTableViewCell: BaseTableViewCell {
     let gesture = UIPanGestureRecognizer()
     let dismissButton = UIButton()
 
+    let vStackView = UIStackView()
+    let hStackView = UIStackView()
     
     override func configureHierarchy() {
-        contentView.addSubview(backdropImageView)
-        contentView.addSubview(posterImageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(airDateLabel)
-        contentView.addSubview(overviewLabel)
-        contentView.addSubview(voteLabel)
-        contentView.addSubview(episodeRunTimeLabel)
-        contentView.addSubview(genreLabel)
-        contentView.addSubview(tvChannelLabel)
-        contentView.addSubview(tvChannelImageView)
         
+        contentView.addSubview(backdropImageView)
+        contentView.addSubview(vStackView)
+        contentView.addSubview(hStackView)
+        
+        contentView.addSubview(posterImageView)
+        vStackView.addArrangedSubview(titleLabel)
+        vStackView.addArrangedSubview(airDateLabel)
+        vStackView.addArrangedSubview(voteLabel)
+        vStackView.addArrangedSubview(episodeRunTimeLabel)
+        vStackView.addArrangedSubview(genreLabel)
+        vStackView.addArrangedSubview(hStackView)
+        
+        hStackView.addArrangedSubview(tvChannelLabel)
+        hStackView.addArrangedSubview(tvChannelImageView)
+        
+        contentView.addSubview(overviewLabel)
         contentView.addGestureRecognizer(gesture)
         contentView.addSubview(dismissButton)
         contentView.addSubview(videoButton)
@@ -59,49 +67,32 @@ final class TVDetailTableViewCell: BaseTableViewCell {
         posterImageView.snp.makeConstraints { make in
             make.top.equalTo(dismissButton.snp.bottom).offset(10)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
-            make.height.equalTo(130)
             make.width.equalTo(100)
+            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.4)
         }
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.top)
+        
+        vStackView.snp.makeConstraints { make in
             make.leading.equalTo(posterImageView.snp.trailing).offset(10)
+            make.top.equalTo(posterImageView.snp.top)
             make.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(36)
+            make.height.lessThanOrEqualTo(posterImageView)
+            
         }
         voteLabel.snp.makeConstraints { make in
-            make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.top.equalTo(titleLabel.snp.bottom).offset(5)
-            make.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(13)
-        }
-        episodeRunTimeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.top.equalTo(voteLabel.snp.bottom).offset(5)
-            make.trailing.equalToSuperview().inset(20)
             make.height.equalTo(13)
         }
         genreLabel.snp.makeConstraints { make in
-            make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.top.equalTo(episodeRunTimeLabel.snp.bottom).offset(5)
-            make.trailing.equalToSuperview().inset(20)
             make.height.equalTo(13)
         }
         airDateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.top.equalTo(genreLabel.snp.bottom).offset(5)
-            make.trailing.equalToSuperview().inset(20)
             make.height.equalTo(13)
+        }
+        hStackView.snp.makeConstraints { make in
+            make.leading.equalTo(vStackView.snp.leading)
+            make.height.equalTo(15)
+        }
 
-        }
-        tvChannelLabel.snp.makeConstraints { make in
-            make.leading.equalTo(posterImageView.snp.trailing).offset(10)
-            make.top.equalTo(airDateLabel.snp.bottom).offset(5)
-            make.height.equalTo(20)
-        }
         tvChannelImageView.snp.makeConstraints { make in
-            make.leading.equalTo(tvChannelLabel.snp.trailing).offset(10)
-            make.top.equalTo(airDateLabel.snp.bottom).offset(5)
-            make.bottom.equalTo(tvChannelLabel.snp.bottom)
             make.width.equalTo(30)
         }
         
@@ -113,10 +104,9 @@ final class TVDetailTableViewCell: BaseTableViewCell {
         
         
         overviewLabel.snp.makeConstraints { make in
-            
-            make.top.equalTo(tvChannelLabel.snp.bottom).offset(10)
+            make.top.equalTo(posterImageView.snp.bottom).offset(10).priority(.required)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.bottom.greaterThanOrEqualTo(contentView.snp.bottom).inset(20)
+            make.bottom.equalTo(backdropImageView.snp.bottom).inset(10)
         }
     }
     
@@ -126,19 +116,32 @@ final class TVDetailTableViewCell: BaseTableViewCell {
         
         backdropImageView.alpha = 0.3
         
+        vStackView.axis = .vertical
+        vStackView.spacing = 5
+        vStackView.alignment = .top
+        vStackView.distribution = .fillProportionally
+        
+        hStackView.spacing = 10
+        hStackView.axis = .horizontal
+        hStackView.alignment = .leading
+        
         posterImageView.contentMode = .scaleAspectFit
         
         titleLabel.font = .boldSystemFont(ofSize: 15)
         titleLabel.textAlignment = .left
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 2
-        
+
         voteLabel.setTVDetailLabel()
+        voteLabel.numberOfLines = 0
         episodeRunTimeLabel.setTVDetailLabel()
+        episodeRunTimeLabel.numberOfLines = 0
         genreLabel.setTVDetailLabel()
-        genreLabel.numberOfLines = 1
+        genreLabel.numberOfLines = 0
+        airDateLabel.numberOfLines = 0
         airDateLabel.setTVDetailLabel()
         tvChannelLabel.setTVDetailLabel()
+        tvChannelLabel.numberOfLines = 0
         
         tvChannelImageView.contentMode = .scaleAspectFit
         tvChannelImageView.backgroundColor = .white
@@ -148,9 +151,10 @@ final class TVDetailTableViewCell: BaseTableViewCell {
         videoButton.setImage(UIImage(systemName: "play.rectangle"), for: .normal)
         videoButton.tintColor = .white
         
-        overviewLabel.numberOfLines = 4
+        overviewLabel.numberOfLines = 0
         overviewLabel.setTVDetailLabel()
-        
+        overviewLabel.setContentHuggingPriority(.required, for: .vertical)
+
     }
     
 }
@@ -164,12 +168,13 @@ extension TVDetailTableViewCell {
         posterImageView.kf.setImage(with: posterURL)
         titleLabel.text = data.titleLabel
         voteLabel.text = data.voteLable
-        episodeRunTimeLabel.text = data.runtime
+        data.setRuntimeLabel(episodeRunTimeLabel)
         genreLabel.text = data.genre
         airDateLabel.text = data.airData
         tvChannelLabel.text = data.networks?.first?.nameLabel
         tvChannelImageView.kf.setImage(with: tvChannerLogoURL)
         overviewLabel.text = data.overviewLabel
+        
         
         if data.networks?.first?.logo == nil {
             tvChannelImageView.isHidden = true

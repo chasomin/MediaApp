@@ -5,7 +5,7 @@
 //  Created by 차소민 on 1/30/24.
 //
 
-import Foundation
+import UIKit
  
 
 struct Media: Decodable {
@@ -54,11 +54,11 @@ struct Result: Decodable {
         return "\(vote) / 10.00"
     }
     
-    var runtime: String {
-        if let runtime = episodeRunTime?.first{
-            return "회차 당 \(runtime)분"
+    func setRuntimeLabel(_ label: UILabel) {
+        if let runtime = episodeRunTime?.first {
+            label.text = "회차 당 \(runtime)분"
         } else {
-            return "평균 러닝타임이 제공되지 않습니다"
+            label.isHidden = true
         }
     }
 
