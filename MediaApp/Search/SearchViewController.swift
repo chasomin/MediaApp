@@ -89,6 +89,9 @@ extension SearchViewController: UISearchBarDelegate {
                 
                 self.navigationController?.pushViewController(vc, animated: true)
                 searchBar.text = ""
+            } else {
+                self.showToast(text: "오류가 발생했습니다.\n잠시후에 다시 시도해주세요")
+
             }
         }
         
@@ -133,6 +136,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 UserDefaultsManager.shared.search.insert(searchText, at: 0)
                 self.mainView.tableView.reloadData()
             } else {
+                self.showToast(text: "오류가 발생했습니다.\n잠시후에 다시 시도해주세요")
             }
         }
         

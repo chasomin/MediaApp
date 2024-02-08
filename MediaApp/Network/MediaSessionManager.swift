@@ -8,6 +8,11 @@
 import Foundation
 //TODO: 에러 상황별로 나눠보기 enum
 
+enum RequestError: Error {
+    case noData
+    case vaildResponse
+}
+
 final class MediaSessionManager {
     static let shared = MediaSessionManager()
     private init() { }

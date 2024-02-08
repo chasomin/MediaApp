@@ -88,7 +88,6 @@ extension TVDetailViewController {
                 TVData.detail = result
                 group.leave()
             } else {
-                //TODO: 에러 상황별로 나눠보기 enum
                 self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
         }
@@ -100,7 +99,6 @@ extension TVDetailViewController {
                 TVData.cast = result
                 group.leave()
             } else {
-                //TODO: 에러 상황별로 나눠보기 enum
                 self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
         }
@@ -112,7 +110,6 @@ extension TVDetailViewController {
                 TVData.recommand = result
                 group.leave()
             } else {
-                //TODO: 에러 상황별로 나눠보기 enum
                 self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
         }

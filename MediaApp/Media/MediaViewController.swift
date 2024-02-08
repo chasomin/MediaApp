@@ -51,7 +51,7 @@ extension MediaViewController {
                 self.dataList[0] = result
                 self.mainView.tableView.reloadData()
             } else {
-                // TODO: Alert
+                self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
             }
             group.leave()
         }
@@ -67,7 +67,8 @@ extension MediaViewController {
                 self.dataList[1] = result
                 self.mainView.tableView.reloadData()
             } else {
-                // TODO: Alert
+                self.showToast(text: "오류가 발생했습니다\n잠시후에 다시 시도해주세요")
+
             }
             group.leave()
         }
@@ -84,7 +85,7 @@ extension MediaViewController {
                 self.dataList[2] = result
                 self.mainView.tableView.reloadData()
             } else {
-                // TODO: Alert
+                self.showToast(text: "오류가 발생했습니다.\n잠시후에 다시 시도해주세요")
             }
             group.leave()
         }
