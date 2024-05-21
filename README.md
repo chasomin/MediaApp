@@ -1,3 +1,6 @@
+
+<img src="https://github.com/chasomin/MediaApp/assets/114223423/91808a11-d076-4208-af75-5e2b161cffcd" width=100, height=100>
+
 # MediaApp
 
 현재 인기 있는 미디어와 관련된 정보를 얻고 감상평을 남길 수 있는 앱
@@ -28,9 +31,3 @@ iOS 17.0
 ## **기술**
 
 `UIKit`  `MVC` `URLSession` `Decodable` `CodeBaseUI` `SnapKit` `UserDefaults` `Singleton` `Toast` `Kingfisher`
-
-
-## **기술 고려 사항**
-
-## **기술 설명**
-
