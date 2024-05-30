@@ -3,7 +3,7 @@
 
 # MediaApp
 
-현재 인기 있는 미디어와 관련된 정보를 얻고 감상평을 남길 수 있는 앱
+현재 인기 있는 미디어와 관련된 정보를 얻을 수 있는 앱
 
 ### **iOS 1인 개발**
 
@@ -30,4 +30,16 @@ iOS 17.0
 
 ## **기술**
 
-`UIKit`  `MVC` `URLSession` `Decodable` `CodeBaseUI` `SnapKit` `UserDefaults` `Singleton` `Toast` `Kingfisher`
+`UIKit` `MVC` `Singleton` `URLSession` `UserDefaults` `Decodable` `CodeBaseUI` `SPM` `SnapKit` `Toast` `Kingfisher`
+
+
+## **기술 설명**
+ **Singleton** 패턴을 통해 불필요한 인스턴스 생성을 방지하여 리소스 절약
+
+ **DispatchGroup**을 통해 작업 간의 의존성 관리
+
+ enum **NameSpace**를 통해 literal 값을 캡슐화하여 유지보수에 용이한 코드 구현
+
+ **BaseView**를 사용하여 일관된 ViewController 구조 형성
+
+ **CustomView**를 사용하여 동일한 디자인 패턴을 적용
