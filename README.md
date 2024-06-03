@@ -34,12 +34,50 @@ iOS 17.0
 
 
 ## **기술 설명**
+
  **Singleton** 패턴을 통해 불필요한 인스턴스 생성을 방지하여 리소스 절약
 
- **DispatchGroup**을 통해 작업 간의 의존성 관리
-
  enum **NameSpace**를 통해 literal 값을 캡슐화하여 유지보수에 용이한 코드 구현
+
+ 연산프로퍼티 getter, setter를 사용하여 UserDeafaults 관리
 
  **BaseView**를 사용하여 일관된 ViewController 구조 형성
 
  **CustomView**를 사용하여 동일한 디자인 패턴을 적용
+
+ **automaticDimension**을 통한 Self-Sizing Cell 구성
+
+
+## 기술 회고
+
+UserDefaults 데이터 저장 및 관리를 손쉽게 하기 위해서 연산프로퍼티의 getter, setter를 사용했다.
+
+```swift
+final class UserDefaultsManager {
+    static let shared = UserDefaultsManager()
+    
+    private init() { }
+    
+    enum UDKey: String {
+        case search
+    }
+    
+    let ud = UserDefaults.standard
+    
+    var search: [String] {
+        get {
+            ud.stringArray(forKey: UDKey.search.rawValue) ?? []
+        }
+        set {
+            ud.setValue(newValue, forKey: UDKey.search.rawValue)
+        }
+    }
+}
+```
+현재는 1개의 케이스에만 UserDefaults를 사용 중이지만, 더 많은 케이스를 저장한다면 get / set 코드가 반복된다.
+
+✔️ 개선 방안
+
+propertyWrapper를 사용하면 get / set 같은 보일러 플레이트 코드를 줄일 수 있다.
+
+이후 프로젝트에서 propertyWrapper를 사용하여 UserDefaults를 효율적으로 관리해보면 좋을 것 같다.
